@@ -10,146 +10,274 @@
 html{scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:#f4f1ea;
-  color:#2b3038;
+  background:#f3efe7;
+  color:#2f3540;
 }
-section{padding:90px 8%}
+a{text-decoration:none;color:inherit}
+section{padding:96px 8%}
+
+/* HERO */
 .hero{
   min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:40px;
+  padding:0;
+  display:flex;
   align-items:center;
-  background:linear-gradient(120deg,#111827,#243447 45%,#f4f1ea 45%);
-}
-.hero-box{
-  background:rgba(15,23,42,.75);
-  backdrop-filter:blur(14px);
-  color:white;
-  padding:56px;
-  border-radius:28px;
-}
-.logo{font-size:54px;letter-spacing:.18em;font-weight:800;margin-bottom:28px}
-.kicker{font-size:15px;margin-bottom:70px;opacity:.9}
-.hero h1{font-size:42px;line-height:1.15;margin-bottom:30px}
-.hero p{font-size:18px;line-height:1.6;color:#d7dee8;margin-bottom:34px}
-.btn{
-  display:inline-block;
-  padding:18px 34px;
-  border-radius:14px;
-  background:#f2e8d8;
-  color:#253044;
-  text-decoration:none;
-  font-weight:700;
-  border:none;
-  cursor:pointer;
-}
-.dark-btn{background:#253044;color:#fff}
-.visual{
-  min-height:520px;
-  border-radius:32px;
   background:
-    radial-gradient(circle at 45% 45%,rgba(255,255,255,.35),transparent 18%),
-    linear-gradient(135deg,#0b1220,#1e293b 45%,#64748b);
+    linear-gradient(90deg,rgba(5,12,20,.78),rgba(10,25,39,.35),rgba(0,0,0,.15)),
+    radial-gradient(circle at 68% 48%,rgba(180,210,255,.28),transparent 22%),
+    linear-gradient(135deg,#07111d 0%,#182838 42%,#40516a 100%);
   position:relative;
   overflow:hidden;
 }
-.visual:after{
+.hero:after{
   content:"";
   position:absolute;
-  width:140px;height:420px;
-  background:linear-gradient(to top,rgba(255,255,255,.04),rgba(255,255,255,.55),rgba(255,255,255,.02));
-  filter:blur(14px);
-  left:44%;bottom:60px;
-  border-radius:100px;
+  right:11%;
+  bottom:9%;
+  width:420px;
+  height:520px;
+  border-radius:36px;
+  background:
+    radial-gradient(circle at 45% 25%,rgba(255,255,255,.45),transparent 12%),
+    linear-gradient(145deg,#0d1723,#26384c 55%,#8795a8);
+  opacity:.82;
+  filter:saturate(.9) contrast(1.05);
 }
+.hero-smoke{
+  position:absolute;
+  right:26%;
+  top:28%;
+  width:110px;
+  height:420px;
+  background:linear-gradient(to top,rgba(255,255,255,.02),rgba(255,255,255,.46),rgba(255,255,255,.03));
+  filter:blur(16px);
+  border-radius:999px;
+  opacity:.72;
+}
+.hero-card{
+  width:450px;
+  min-height:560px;
+  margin-left:7%;
+  padding:40px;
+  border-radius:8px;
+  background:linear-gradient(135deg,rgba(10,25,39,.85),rgba(35,68,102,.70));
+  backdrop-filter:blur(12px);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  position:relative;
+  z-index:2;
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+}
+.logo{
+  font-size:58px;
+  letter-spacing:.16em;
+  font-weight:800;
+  line-height:1;
+}
+.sub{
+  margin-top:34px;
+  font-size:15px;
+  font-weight:600;
+  opacity:.92;
+}
+.hero-copy{
+  margin-top:88px;
+}
+.hero-copy h1{
+  font-size:28px;
+  line-height:1.45;
+  font-weight:700;
+  margin-bottom:0;
+}
+.hero-btn{
+  width:100%;
+  height:72px;
+  border-radius:8px;
+  border:none;
+  background:#f3eadc;
+  color:#596171;
+  font-size:17px;
+  font-weight:500;
+  cursor:pointer;
+  transition:.2s ease;
+}
+.hero-btn:hover{transform:translateY(-2px);background:#fff}
+
+/* MICRO CARDS */
 .cards{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:28px;
+  margin-top:-38px;
+  position:relative;
+  z-index:3;
 }
 .card{
-  background:#243044;
-  color:white;
-  border-radius:22px;
-  min-height:260px;
-  padding:32px;
+  height:260px;
+  border-radius:14px;
+  padding:28px;
+  background:linear-gradient(145deg,#1c293b,#2d415b);
+  color:#fff;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+  box-shadow:0 18px 50px rgba(15,23,42,.14);
 }
-.card h3{font-size:26px}
-.card p{color:#dce3ee;font-size:16px}
+.card h3{font-size:25px}
+.card p{font-size:16px;color:#e6edf5;line-height:1.45}
+
+/* SPLIT */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:60px;
+  gap:70px;
   align-items:center;
 }
-h2{font-size:48px;line-height:1.15;margin-bottom:36px}
-.lead{font-size:19px;line-height:1.8;color:#667085}
-.photo{
-  min-height:430px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#111827,#334155);
+h2{
+  font-size:46px;
+  line-height:1.14;
+  color:#4a5260;
+  margin-bottom:44px;
+  letter-spacing:-.03em;
+}
+.text{
+  font-size:18px;
+  line-height:1.75;
+  color:#6d7480;
+  max-width:430px;
+}
+.image-box{
+  height:430px;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 52% 22%,rgba(255,255,255,.32),transparent 12%),
+    linear-gradient(145deg,#0c1320,#27364a 55%,#6b7582);
   position:relative;
   overflow:hidden;
 }
-.photo:after{
+.image-box:after{
   content:"VAERO";
   position:absolute;
-  bottom:32px;right:36px;
-  color:rgba(255,255,255,.18);
-  font-size:44px;
-  letter-spacing:.15em;
+  right:26px;
+  bottom:24px;
+  color:rgba(255,255,255,.16);
+  font-size:38px;
+  letter-spacing:.18em;
   font-weight:800;
 }
-.video-block{
-  background:#111827;
-  color:white;
+
+/* WHITE TEA */
+.white{
+  background:#f7f4ee;
+}
+.white .image-box{
+  background:
+    radial-gradient(circle at 52% 30%,rgba(255,255,255,.95),transparent 16%),
+    linear-gradient(145deg,#dce4ec,#f7f7f4);
+}
+.white .image-box:after{
+  content:"WHITE TEA";
+  color:rgba(60,70,80,.20);
+}
+
+/* VIDEO */
+.video{
+  background:#101a27;
+  color:#fff;
   text-align:center;
 }
+.video h2{color:#fff}
+.video p{
+  color:#cbd5e1;
+  max-width:520px;
+  margin:0 auto;
+  font-size:18px;
+  line-height:1.7;
+}
 .video-box{
-  margin-top:36px;
-  height:420px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#0f172a,#334155);
+  margin:48px auto 0;
+  max-width:920px;
+  height:440px;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(255,255,255,.28),transparent 13%),
+    linear-gradient(145deg,#0c111a,#25364b);
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#cbd5e1;
-  font-size:18px;
+  color:#94a3b8;
+  font-size:16px;
 }
-.offer{
+
+/* ORDER */
+.order{
   text-align:center;
-  background:#ede7dc;
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
-.offer h2{font-size:52px}
-.offer p{max-width:720px;margin:0 auto 28px;color:#667085;font-size:18px;line-height:1.7}
-.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.order h2{
+  color:#333a45;
+  font-size:52px;
+}
+.order p{
+  color:#727986;
+  font-size:18px;
+  margin-bottom:34px;
+}
+.cta{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-width:260px;
+  height:68px;
+  border-radius:14px;
+  background:#253044;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.track-link{
+  margin-top:22px;
+  display:inline-block;
+  color:#777;
+  font-size:14px;
+}
 .floating-wa{
   position:fixed;
-  right:24px;
-  bottom:24px;
+  right:28px;
+  bottom:28px;
   background:#253044;
-  color:white;
-  text-decoration:none;
-  padding:16px 24px;
+  color:#fff;
+  padding:16px 28px;
   border-radius:999px;
-  font-weight:700;
   z-index:99;
+  font-weight:700;
+  box-shadow:0 18px 38px rgba(0,0,0,.18);
 }
 .footer{
-  padding:40px 8%;
-  color:#777;
+  padding:42px 8%;
   font-size:13px;
+  color:#8a8f98;
 }
+
+/* MOBILE */
 @media(max-width:900px){
-  .hero,.split{grid-template-columns:1fr}
-  .cards{grid-template-columns:1fr}
-  .hero{background:#f4f1ea}
-  .hero-box{background:#253044}
-  h2{font-size:36px}
+  section{padding:72px 6%}
+  .hero{align-items:flex-start;padding-top:40px}
+  .hero-card{
+    width:88%;
+    min-height:520px;
+    margin:30px auto;
+  }
+  .hero:after{opacity:.35;right:-70px}
+  .cards,.split{grid-template-columns:1fr}
+  .cards{margin-top:0}
+  h2{font-size:38px}
+  .floating-wa{right:18px;bottom:18px}
 }
 </style>
 </head>
@@ -157,81 +285,98 @@ h2{font-size:48px;line-height:1.15;margin-bottom:36px}
 <body>
 
 <section class="hero">
-  <div class="hero-box">
-    <div class="logo">VAERO</div>
-    <div class="kicker">Kişisel Atmosfer Sistemi</div>
-    <h1>Bu bir koku değil.<br>Bir atmosfer.</h1>
-    <p>Arabanı yalnızca kullandığın bir alan olmaktan çıkar. VAERO, sürüşünü daha sakin, daha temiz ve daha kontrollü bir atmosfere dönüştürür.</p>
-    <a class="btn" href="#offer" onclick="track('hero_cta_click')">Atmosferi Keşfet</a>
+  <div class="hero-smoke"></div>
+
+  <div class="hero-card">
+    <div>
+      <div class="logo">VAERO</div>
+      <div class="sub">Kişisel Atmosfer Sistemi</div>
+
+      <div class="hero-copy">
+        <h1>Bu bir koku değil.<br>Bir atmosfer.</h1>
+      </div>
+    </div>
+
+    <button class="hero-btn" onclick="goSales()">Atmosferi Keşfet</button>
   </div>
-  <div class="visual"></div>
 </section>
 
 <section>
   <div class="cards">
-    <div class="card"><h3>Dengeli.</h3><p>Ne eksik ne fazla. Ortamı boğmadan tamamlar.</p></div>
-    <div class="card"><h3>Sessiz.</h3><p>Rahatsız etmez. Sadece arka planda kalır.</p></div>
-    <div class="card"><h3>Minimal.</h3><p>Göze bağırmaz. Sadece vardır.</p></div>
+    <div class="card">
+      <h3>Dengeli.</h3>
+      <p>Ne eksik ne fazla.</p>
+    </div>
+    <div class="card">
+      <h3>Sessiz.</h3>
+      <p>Rahatsız etmez.</p>
+    </div>
+    <div class="card">
+      <h3>Minimal.</h3>
+      <p>Sadece vardır.</p>
+    </div>
   </div>
 </section>
 
 <section class="split">
   <div>
     <h2>Bu bir koku meselesi değil.</h2>
-    <p class="lead">Sürüş sırasında ne hissettiğinle ilgili. Araban, gününün devam ettiği bir alan. VAERO onu seninle sakin kalan bir atmosfere dönüştürür.</p>
+    <p class="text">
+      Sürüş sırasında ne hissettiğinle ilgili.
+      Araban, gününün devam ettiği bir alan.
+      VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
+    </p>
   </div>
-  <div class="photo"></div>
+  <div class="image-box"></div>
 </section>
 
-<section class="split">
-  <div class="photo"></div>
+<section class="split white">
   <div>
     <h2>White Tea</h2>
-    <p class="lead">Ferah bir başlangıç. Yumuşak bir devam. Sakin bir iz. Ortamı fark ettirmeden değiştirir.</p>
+    <p class="text">
+      Ortamı fark ettirmeden değiştirir.<br><br>
+      Ferah bir başlangıç.<br>
+      Yumuşak bir devam.<br>
+      Sakin bir iz.
+    </p>
   </div>
+  <div class="image-box"></div>
 </section>
 
 <section class="split">
   <div>
-    <h2>Tek cihaz.<br>Çok işlev.</h2>
-    <p class="lead">Şarj eder. Koku yayar. Ortamı tamamlar. Hepsi tek cihazda.</p>
-    <a class="btn dark-btn" href="#offer" onclick="track('middle_cta_click')">Atmosferi Deneyimle</a>
+    <h2>Sürüşüne sakinliği ekle.</h2>
+    <p class="text">Günlük kullanım için tasarlandı.</p>
   </div>
-  <div class="photo"></div>
+  <div class="image-box"></div>
 </section>
 
-<section class="video-block">
+<section class="video">
   <h2>VAERO’yu hisset.</h2>
-  <p class="lead" style="color:#cbd5e1">Yumuşak yayılım. Sessiz bir etki. Çaba yok. Sadece sakinlik.</p>
+  <p>Yumuşak yayılım. Sessiz bir etki. Çaba yok. Sadece sakinlik.</p>
   <div class="video-box">Atmosfer videosu alanı</div>
 </section>
 
-<section id="offer" class="offer">
-  <h2>Sürüşüne sakinliği ekle.</h2>
-  <p>Günlük kullanım için tasarlandı. Minimal, sessiz ve modern bir araç atmosfer sistemi.</p>
-  <div class="cta-row">
-    <a class="btn dark-btn" id="whatsappBtn" href="#" onclick="track('whatsapp_click')">WhatsApp’tan Sipariş Ver</a>
-    <a class="btn" id="trackBtn" href="#" onclick="track('tracking_open')">Gönderi Durumu</a>
-  </div>
-</section>
-
-<section class="offer">
+<section id="order" class="order">
   <h2>Bu bir koku değil.<br>Bir değişim.</h2>
-  <a class="btn dark-btn" href="#" onclick="track('final_whatsapp_click'); openWhatsApp()">Sakinliğini Başlat</a>
+  <p>VAERO ile sürüş alanını daha sakin, daha temiz ve daha kişisel hale getir.</p>
+  <a class="cta" href="#" onclick="openWhatsApp(); return false;">Sakinliğini Başlat</a>
+  <a class="track-link" id="trackLink" href="#">Sipariş verdiniz mi? Gönderi durumunu kontrol edin →</a>
 </section>
 
-<div class="footer">
-  Privacy & Terms — VAERO
-</div>
+<div class="footer">Privacy & Terms — VAERO</div>
 
-<a class="floating-wa" href="#" onclick="track('floating_whatsapp_click'); openWhatsApp()">WhatsApp</a>
+<a class="floating-wa" href="#" onclick="openWhatsApp(); return false;">Whatsapp</a>
 
 <script>
 const SUPABASE_URL="https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/events";
 const SUPABASE_KEY="sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN";
 
 const WHATSAPP_NUMBER="905391152765";
+const SALES_PAGE_URL="#order";
 const TRACK_PAGE_URL="https://project-dn5qk.vercel.app";
+
+document.getElementById("trackLink").href=TRACK_PAGE_URL;
 
 function track(eventName,meta={}){
   fetch(SUPABASE_URL,{
@@ -250,13 +395,16 @@ function track(eventName,meta={}){
   }).catch(()=>{});
 }
 
+function goSales(){
+  track("hero_cta_click",{target:"sales"});
+  window.location.href=SALES_PAGE_URL;
+}
+
 function openWhatsApp(){
+  track("whatsapp_click",{source:"sales_page"});
   const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak ve sipariş vermek istiyorum.");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
 }
-
-document.getElementById("whatsappBtn").href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent("Merhaba, VAERO siparişi vermek istiyorum.");
-document.getElementById("trackBtn").href=TRACK_PAGE_URL;
 
 track("sales_page_view",{device:navigator.userAgent});
 
