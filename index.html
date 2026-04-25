@@ -162,21 +162,31 @@ body{
   align-items:center;
 }
 
-h2{
+.split-title{
   font-family:"Oswald",Arial,sans-serif;
-  font-size:46px;
-  line-height:1.15;
+  font-size:32px;
+  line-height:120%;
   font-weight:700;
-  color:#4a5260;
-  margin-bottom:36px;
+  color:#333;
+  margin-bottom:20px;
 }
 
-p{
+.split-top{
   font-family:Arial,sans-serif;
-  font-size:18px;
-  line-height:1.75;
+  font-size:14px;
+  line-height:20px;
   font-weight:400;
-  color:#6d7480;
+  color:#333;
+  margin-bottom:12px;
+}
+
+.split-bottom{
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  line-height:20px;
+  font-weight:400;
+  color:#4f4f4f;
+  opacity:.85;
 }
 
 .image-box{
@@ -334,11 +344,14 @@ p{
 
 <section class="split">
   <div>
-    <h2>Bu bir koku meselesi değil.</h2>
-    <p>
+    <h2 class="split-title">Bu bir koku meselesi değil.</h2>
+
+    <p class="split-top">
       Sürüş sırasında ne hissettiğinle ilgili.
-      Araban, gününün devam ettiği bir alan.
-      VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
+    </p>
+
+    <p class="split-bottom">
+      Araban, gününün devam ettiği bir alan. VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
     </p>
   </div>
   <div class="image-box"></div>
