@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAERO | Satış</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+
+body{
+background:#f5f5f5;
+color:#1a1a1a;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+padding:0 8%;
+background:linear-gradient(135deg,#0b1620,#1c2f44);
+color:#fff;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:.7;
+margin-bottom:30px;
+}
+
+.hero-btn{
+display:inline-block;
+padding:14px 30px;
+background:#e6d7b0;
+color:#000;
+border-radius:6px;
+cursor:pointer;
+border:none;
+}
+
+/* SECTIONS */
+.section{
+padding:100px 8%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:40px;
+background:#fff;
+}
+
+.section:nth-child(even){
+background:#f0f0f0;
+}
+
+.text{
+max-width:500px;
+}
+
+.text h2{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.text p{
+opacity:.7;
+line-height:1.6;
+}
+
+.box{
+width:300px;
+height:300px;
+background:linear-gradient(135deg,#1c2f44,#2c4b6a);
+border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+<h1>Bu bir koku meselesi değil.</h1>
+<p>Sürüş sırasında ne hissettiğinle ilgili.</p>
+
+<button class="hero-btn" onclick="window.scrollTo({top:window.innerHeight,behavior:'smooth'})">
+Detayları Gör
+</button>
+</div>
+</section>
+
+<!-- SECTION 1 -->
+<section class="section">
+<div class="text">
+<h2>Aslında fark ettiğin şey bu değil.</h2>
+<p>
+Gürültü azalır.<br>
+Kafa netleşir.<br>
+Yol akışkan hale gelir.
+</p>
+</div>
+<div class="box"></div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section">
+<div class="box"></div>
+<div class="text">
+<h2>Sürüşüne sakinliği ekle.</h2>
+<p>
+İlk 10 dakika içinde hissedilir.<br>
+Yumuşak, dengeli ve rahatsız etmeyen bir deneyim.
+</p>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+<div class="text">
+<h2>İlk deneyimini başlat</h2>
+<p>Tek cihaz. Net etki.</p>
+
+<button class="hero-btn">
+Whatsapp ile sipariş ver
+</button>
+</div>
+<div class="box"></div>
+</section>
+
+</body>
+</html>
