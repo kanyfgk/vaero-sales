@@ -283,7 +283,7 @@ body{
       Bir atmosfer.
     </div>
 
-    <button class="hero-btn" onclick="window.location.href='sales.html'">
+    <button class="hero-btn" onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'">
   Atmosferi Keşfet
 </button>
 
@@ -368,11 +368,11 @@ body{
     VAERO’nun arkasındaki sistemi ve deneyim paketini görmek için satış sayfasına geç.
   </p>
 
-  <a class="cta" href="sales.html">
-    Satış Sayfasına Geç →
-  </a>
+  <a class="cta" href="sales.html?source=home_bottom" onclick="trackEvent('home_bottom_sales_click',{source:'home_bottom',target:'sales'})">
+  Satış Sayfasına Geç →
+</a>
 
-  <a class="track-link" href="https://project-dn5qk-jsm9p62kx-nerimanaba1993-1886s-projects.vercel.app" target="_blank">
+  <a class="track-link" href="https://project-dn5qk-jsm9p62kx-nerimanaba1993-1886s-projects.vercel.app" target="_blank" onclick="trackEvent('home_track_click',{source:'home_bottom',target:'track'})">
   Sipariş verdiniz mi? Gönderi durumunu kontrol edin →
 </a>
 </section>
@@ -384,8 +384,26 @@ body{
 const WHATSAPP_NUMBER="905391152765";
 
 function openWhatsApp(){
-  const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak istiyorum.");
+  const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak istiyorum");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
+}
+
+/* BURAYA EKLİYORSUN */
+function trackEvent(eventName, meta = {}) {
+  fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/events", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN",
+      "Authorization": "Bearer sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN"
+    },
+    body: JSON.stringify({
+      event_name: eventName,
+      page: "index",
+      meta: meta
+    }),
+    keepalive: true
+  }).catch(()=>{});
 }
 </script>
 
