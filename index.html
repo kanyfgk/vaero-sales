@@ -15,21 +15,17 @@ body{
   color:#333;
   font-family:Arial, sans-serif;
 }
-.hero-secondary{
-  margin-top:18px;
-}
-
-.track-btn{
-  font-size:13px;
+.track-link{
+  display:block;
+  margin-top:22px;
   color:#9aa3af;
-  text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,0.2);
-  padding-bottom:2px;
+  font-size:14px;
+  text-decoration:underline;
+  opacity:.85;
 }
 
-.track-btn:hover{
-  color:#fff;
-  border-color:#fff;
+.track-link:hover{
+  opacity:1;
 }
 .hero{
   min-height:100vh;
@@ -291,11 +287,6 @@ body{
   Atmosferi Keşfet
 </button>
 
-<div class="hero-secondary">
-  <a href="track.html" class="track-btn">
-    Gönderi Durumu
-  </a>
-</div>
 </section>
 
 <section class="cards-section">
@@ -372,13 +363,19 @@ body{
 
 <section class="final">
   <h2>Atmosferin devamını gör.</h2>
+
   <p>
     VAERO’nun arkasındaki sistemi ve deneyim paketini görmek için satış sayfasına geç.
   </p>
 
-  <a class="cta" href="sales.html">Satış Sayfasına Geç →</a>
-</section>
+  <a class="cta" href="sales.html">
+    Satış Sayfasına Geç →
+  </a>
 
+  <a class="track-link" href="track.html">
+    Sipariş verdiniz mi? Gönderi durumunu kontrol edin →
+  </a>
+</section>
 <a class="floating-wa" href="#" onclick="openWhatsApp(); return false;">Whatsapp</a>
 
 <div class="footer">Privacy & Terms — VAERO</div>
