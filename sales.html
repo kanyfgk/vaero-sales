@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VAERO | Kişisel Atmosfer Sistemi</title>
+<title>VAERO | Deneyim Paketi</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
@@ -13,20 +13,29 @@
 body{
   background:#f3efe7;
   color:#333;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
-  padding-left:7%;
+  padding:0 8%;
   background:
-    linear-gradient(90deg,rgba(6,14,22,.85),rgba(12,30,48,.55),rgba(20,35,52,.25)),
-    radial-gradient(circle at 75% 45%,rgba(220,235,255,.38),transparent 12%),
+    linear-gradient(90deg,rgba(6,14,22,.88),rgba(12,30,48,.62),rgba(20,35,52,.28)),
     linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
   position:relative;
   overflow:hidden;
+}
+
+.hero-card{
+  width:450px;
+  min-height:450px;
+  padding:40px;
+  background:linear-gradient(180deg,#0b1620 0%,#1a3550 80%);
+  box-shadow:0 6px 24px rgba(0,0,0,.28);
+  position:relative;
+  z-index:2;
 }
 
 .hero-visual{
@@ -42,112 +51,116 @@ body{
   opacity:.78;
 }
 
-.hero-card{
-  width:450px;
-  height:450px;
-  padding:40px;
-  border-radius:0;
-  background:
-    linear-gradient(180deg,#0b1620 0%,#1a3550 80%),
-    rgba(10,25,39,.65);
-  opacity:.90;
-  backdrop-filter:blur(10px);
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-}
-
 .logo{
   font-family:"Oswald",Arial,sans-serif;
   font-size:48px;
   line-height:40px;
   letter-spacing:6px;
-  font-weight:700;
   color:white;
   margin-top:20px;
   margin-bottom:15px;
 }
 
 .sub{
-  font-family:Arial,sans-serif;
   font-size:12px;
-  line-height:20px;
-  font-weight:400;
   color:#bfc7d1;
   letter-spacing:1px;
-  margin-bottom:86px;
+  margin-bottom:80px;
 }
 
 .hero-text{
-  font-family:Arial,sans-serif;
   font-size:16px;
   line-height:160%;
-  font-weight:400;
   color:#e5e7eb;
-  opacity:.70;
-  margin-bottom:76px;
+  opacity:.75;
+  margin-bottom:70px;
+}
+
+button,.cta{
+  cursor:pointer;
+  border:0;
+  text-decoration:none;
 }
 
 .hero-btn{
-  display:block;
-  width:350px;
+  width:100%;
+  max-width:350px;
   height:54px;
-  margin-top:30px;
-  margin-right:20px;
-  margin-left:0;
-  padding:16px 40px;
+  border-radius:8px;
   background:#e6d7b0;
   color:#0b1620;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,.13);
-  font-family:Arial,sans-serif;
   font-size:14px;
-  line-height:20px;
-  font-weight:400;
   text-align:left;
-  text-decoration:none;
-  opacity:.95;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
-  cursor:pointer;
-}
-.cta-btn{
-  display:block;
-  width:350px;
-  height:54px;
-  margin-top:30px;
-  margin-right:20px;
-  margin-left:0;
   padding:16px 40px;
-  background:#1f2a38;
-  color:white;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,.13);
-  font-family:Arial,sans-serif;
-  font-size:14px;
-  line-height:20px;
-  font-weight:500;
-  letter-spacing:0.3px;
-  text-align:center;
-  text-decoration:none;
-  opacity:.95;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
-  cursor:pointer;
-}
-.cards-section{
-  padding:110px 8%;
 }
 
-.cards{
+.section{
+  padding:120px 8%;
+  max-width:1180px;
+  margin:auto;
+}
+
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.white{
+  background:#f7f4ee;
+  max-width:none;
+}
+
+.white .inner{
+  max-width:1180px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+h2{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:44px;
+  line-height:120%;
+  color:#333;
+  margin-bottom:30px;
+}
+
+.top{
+  font-size:18px;
+  line-height:26px;
+  margin-bottom:20px;
+  color:#333;
+}
+
+.bottom{
+  font-size:17px;
+  line-height:28px;
+  color:#444;
+  opacity:.9;
+}
+
+.image-box{
+  height:410px;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 50% 25%,rgba(255,255,255,.32),transparent 12%),
+    linear-gradient(145deg,#0c1320,#27364a 55%,#6b7582);
+  box-shadow:0 18px 45px rgba(0,0,0,.10);
+}
+
+.feature-list{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:28px;
+  gap:24px;
 }
 
-.card{
-  height:260px;
-  border-radius:14px;
+.feature{
+  min-height:230px;
+  border-radius:16px;
   padding:28px;
   background:linear-gradient(145deg,#1c293b,#2d415b);
   color:white;
@@ -156,137 +169,51 @@ body{
   justify-content:space-between;
 }
 
-.card h3{
+.feature h3{
   font-family:"Oswald",Arial,sans-serif;
   font-size:26px;
-  font-weight:700;
 }
 
-.card p{
-  font-family:Arial,sans-serif;
-  font-size:16px;
-  font-weight:400;
+.feature p{
   color:#e5e7eb;
-}
-
-.split{
-  padding:140px 0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:center;
-  max-width:1120px;
-  margin:auto;
-}
-
-.split-title{
-  font-family:"Oswald",Arial,sans-serif;
-  font-size:48px;
-  line-height:120%;
-  font-weight:700;
-  color:#333;
-  margin-bottom:92px;
-  max-width:480px;
-  margin-top:-60px;
-}
-
-.split-top{
-  font-family:Arial,sans-serif;
-  font-size:18px;
   line-height:24px;
-  font-weight:400;
-  color:#333;
-  margin-top:28px;
-  margin-bottom:28px;
-  max-width:480px;
+  opacity:.9;
 }
 
-.split-bottom{
-  font-family:Arial,sans-serif;
-  font-size:18px;
-  line-height:26px;
-  font-weight:400;
-  color:#444;
-  opacity:.92;
-  max-width:480px;
-  margin-top:0;
-  letter-spacing:.1px;
-}
-.split-text{
-  margin-top:60px;
-}
-.image-box{
-  height:410px;
-  max-width:430px;
-  border-radius:18px;
-  box-shadow:0 18px 45px rgba(0,0,0,.10);
-  background:
-    radial-gradient(circle at 50% 25%,rgba(255,255,255,.32),transparent 12%),
-    linear-gradient(145deg,#0c1320,#27364a 55%,#6b7582);
-}
-  
-.white{
-  background:#f7f4ee;
-}
-
-.video{
-  padding:100px 8%;
+.final{
+  padding:130px 8%;
+  text-align:center;
   background:#101a27;
   color:white;
-  text-align:center;
 }
 
-.video h2{color:white}
+.final h2{
+  color:white;
+}
 
-.video p{
-  color:#cbd5e1;
-  max-width:520px;
+.final p{
+  max-width:560px;
   margin:0 auto;
-}
-
-.video-box{
-  margin:48px auto 0;
-  max-width:920px;
-  height:420px;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  background:linear-gradient(145deg,#0c111a,#25364b);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#94a3b8;
-}
-
-.order{
-  padding:120px 8%;
-  text-align:center;
-}
-
-.order h2{
-  color:#333a45;
+  color:#cbd5e1;
+  line-height:28px;
 }
 
 .cta{
   display:inline-flex;
   justify-content:center;
   align-items:center;
-  margin-top:30px;
+  margin-top:34px;
   padding:18px 42px;
   border-radius:10px;
-  background:#253044;
-  color:white;
-  font-family:Arial,sans-serif;
+  background:#e6d7b0;
+  color:#0b1620;
   font-size:15px;
-  font-weight:400;
-  cursor:pointer;
 }
 
-.track-link{
-  display:block;
+.note{
   margin-top:22px;
-  color:#777;
-  font-size:14px;
+  font-size:13px;
+  color:#94a3b8;
 }
 
 .floating-wa{
@@ -298,7 +225,6 @@ body{
   padding:16px 28px;
   border-radius:999px;
   z-index:99;
-  font-family:Arial,sans-serif;
   font-size:14px;
 }
 
@@ -316,20 +242,33 @@ body{
 
   .hero-card{
     width:100%;
-    height:auto;
-    min-height:450px;
   }
 
   .hero-visual{
     opacity:.25;
-    right:-120px;
+    right:-140px;
   }
 
-  .cards,.split{
+  .split,.white .inner,.feature-list{
     grid-template-columns:1fr;
   }
 
-  h2{font-size:38px}
+  .section,.white{
+    padding:90px 6%;
+  }
+
+  h2{
+    font-size:36px;
+  }
+
+  .image-box{
+    height:330px;
+  }
+
+  .floating-wa{
+    right:18px;
+    bottom:18px;
+  }
 }
 </style>
 </head>
@@ -340,305 +279,122 @@ body{
   <div class="hero-visual"></div>
 
   <div class="hero-card">
-  <div class="logo">VAERO</div>
+    <div class="logo">VAERO</div>
+    <div class="sub">Deneyim Paketi</div>
 
-  <div class="sub">Kişisel Atmosfer Sistemi</div>
-
-  <div class="hero-text">
-   O atmosferin arkasında<br>
-küçük bir sistem var.
-  </div>
-
-  <button class="hero-btn" onclick="document.getElementById('sales').scrollIntoView({behavior:'smooth'});">
-  Sistemi Gör
-</button>
-</div>
-</section>
-
-<section class="cards-section">
-  <div class="cards">
-    <div class="card">
-      <h3>Dengeli.</h3>
-      <p>Ne eksik ne fazla.</p>
+    <div class="hero-text">
+      Ana sayfada gördüğün atmosfer,<br>
+      tek bir cihazla başlıyor.
     </div>
 
-    <div class="card">
-      <h3>Sessiz.</h3>
-      <p>Rahatsız etmez.</p>
+    <button class="hero-btn" onclick="document.getElementById('sales-start').scrollIntoView({behavior:'smooth'});">
+      Paketi Gör
+    </button>
+  </div>
+</section>
+
+<section id="sales-start" class="section split">
+  <div>
+    <h2>Tek cihaz.<br>Üç temel işlev.</h2>
+    <p class="top">Şarj eder. Yayılım sağlar. Araç içini tamamlar.</p>
+    <p class="bottom">
+      VAERO, sürüş sırasında ayrı ayrı düşünmek istemediğin şeyleri tek noktada toplar.
+      Telefonun güç alır, ortam yumuşar, araç içi daha sade hissettirir.
+    </p>
+  </div>
+
+  <div class="image-box"></div>
+</section>
+
+<section class="section">
+  <div class="feature-list">
+    <div class="feature">
+      <h3>Güç.</h3>
+      <p>Telefonunu sürüş sırasında toparlar. Şarj tarafı arkada sessizce çalışır.</p>
     </div>
 
-    <div class="card">
-      <h3>Minimal.</h3>
-      <p>Sadece vardır.</p>
+    <div class="feature">
+      <h3>Yayılım.</h3>
+      <p>Koku bir noktada kalmaz. Ortama dengeli şekilde dağılır.</p>
+    </div>
+
+    <div class="feature">
+      <h3>Düzen.</h3>
+      <p>Ekstra kablo, ekstra parça, ekstra karmaşa yaratmaz.</p>
     </div>
   </div>
 </section>
 
-<section class="split">
-  <div class="split-text">
-    <h2 class="split-title">Bu bir koku meselesi değil.</h2>
+<section class="white">
+  <div class="inner">
+    <div class="image-box"></div>
 
-    <p class="split-top">
-      Sürüş sırasında ne hissettiğinle ilgili.
-    </p>
-
-    <p class="split-bottom">
-      Araban, gününün devam ettiği bir alan.<br>
-VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
-    </p>
+    <div>
+      <h2>Ucuz plastik hissi vermemeli.</h2>
+      <p class="top">Çünkü araç içinde her gün göreceksin.</p>
+      <p class="bottom">
+        Bu yüzden VAERO sadece “koku yayan bir aparat” gibi konumlanmaz.
+        Görünüşü, kullanımı ve hissi birlikte düşünülür.
+      </p>
+    </div>
   </div>
-  <div class="image-box"></div>
 </section>
 
-<section id="sales" class="split white">
-
-  <div class="image-box"></div>
-
-  <div style="margin-top:20px;">
-    <h2 class="split-title" style="margin-top:-16px;">White Tea</h2>
-
-    <p class="split-top" style="margin-top:28px;">
-      Ortamı fark ettirmeden değiştirir.
-    </p>
-
-    <p class="split-bottom" style="margin-top:18px; line-height:1.8; color:#444;">
-      Ferah bir başlangıç.<br>
-      Yumuşak bir devam.<br>
-      Sakin bir iz.
-    </p>
-  </div>
-
-</section>
-  <section class="split white">
-
-  <div class="image-box"></div>
-
+<section class="section split">
   <div>
-    <h2 class="split-title" style="margin-top:-20px;">
-      Aslında fark ettiğin şey bu değil.
-    </h2>
-
-    <p class="split-top" style="margin-top:20px;">
-      Gürültü azaldı.
-    </p>
-
-    <p class="split-bottom" style="margin-top:12px;">
-      Kafa daha net.<br>
-      Yol daha akışta.<br>
-      Sen daha rahatsın.
-    </p>
-
-    <p style="margin-top:28px; font-size:14px; opacity:.6;">
-  Çoğu kişi bunu ilk sürüşte fark ediyor.
-</p>
-
-<p style="margin-top:12px; font-size:13px; opacity:.5;">
-  Sıradaki parti için bilgi al • özel seçilmiş 1 koku dahil
-</p>
-
-  </div>
-
-</section>
-<section class="split">
-  <div>
-    <h2 class="split-title" style="font-size:42px; line-height:120%; margin-bottom:24px;">
-  Sürüşüne sakinliği ekle.
-</h2>
-
-<p class="split-top" style="margin-top:0; opacity:.68;">
-  Farkı ilk 10 dakikada hissedersin.
-</p>
-
-<button class="cta-btn" onclick="openWhatsApp(); return false;" style="margin-top:34px;">
-  İlk deneyimi başlat →
-</button>
-
-<p class="split-bottom" style="margin-top:22px; font-size:14px; opacity:.55;">
-  Sıradaki parti için bilgi al - özel seçilmiş 1 koku ile
-</p>
-  </div>
-
-  <div class="image-box"></div>
-</section>
-<section id="sales" class="split white">
-
-  <div>
-    <h2 class="split-title">
-      Tek cihaz. Birden fazla etki.
-    </h2>
-
-    <p class="split-top">
-      Sadece koku değil.
-    </p>
-
-    <p class="split-bottom">
-      Aynı anda:
-      <br><br>
-      • Ultra hızlı şarj sağlar  
-      • Ortama dengeli koku yayar  
-      • Sürüş hissini sakinleştirir  
+    <h2>Yanında özel seçilmiş<br>1 koku ile gelir.</h2>
+    <p class="top">Başlangıç paketi hazırdır.</p>
+    <p class="bottom">
+      İlk kullanımda ayrıca aramana gerek kalmaz.
+      Cihaz ve seçilmiş koku birlikte gelir.
+      Sonrasında farklı kokular ayrıca sunulabilir.
     </p>
   </div>
 
   <div class="image-box"></div>
-
 </section>
 
+<section class="white">
+  <div class="inner">
+    <div class="image-box"></div>
 
-<section class="split">
-
-  <div class="image-box"></div>
-
-  <div>
-    <h2 class="split-title">
-      Ultra hızlı şarj
-    </h2>
-
-    <p class="split-top">
-      Beklemezsin.
-    </p>
-
-    <p class="split-bottom">
-      Telefonunu dakikalar içinde toparlar.  
-      Sürüş sırasında kesintisiz güç verir.  
-      Tek cihazla hem enerji hem konfor.
-    </p>
+    <div>
+      <h2>Sınırlı parti mantığıyla ilerler.</h2>
+      <p class="top">Ürünler toplu stok gibi değil, parti parti gelir.</p>
+      <p class="bottom">
+        Bu yüzden sipariş öncesi WhatsApp üzerinden mevcut durum, teslim planı ve paket bilgisi netleştirilir.
+      </p>
+    </div>
   </div>
-
 </section>
 
+<section class="final">
+  <h2>İlk deneyimi başlat.</h2>
+  <p>
+    Fiyat, mevcut parti ve teslim durumu WhatsApp üzerinden netleşir.
+    Almak istiyorsan önce paketin durumunu sor.
+  </p>
 
-<section class="split white">
+  <a class="cta" href="#" onclick="openWhatsApp(); return false;">
+    WhatsApp’tan bilgi al
+  </a>
 
-  <div>
-    <h2 class="split-title">
-      Koku değil. Yayılım.
-    </h2>
-
-    <p class="split-top">
-      Bastırmaz.
-    </p>
-
-    <p class="split-bottom">
-      Ortama yumuşak şekilde dağılır.  
-      Keskin değil, dengeli hissedilir.  
-      İçeride “temiz bir alan” oluşturur.
-    </p>
+  <div class="note">
+    VAERO cihaz + özel seçilmiş 1 koku
   </div>
-
-  <div class="image-box"></div>
-
 </section>
-
-
-<section class="split">
-
-  <div class="image-box"></div>
-
-  <div>
-    <h2 class="split-title">
-      White Tea nasıl bir his?
-    </h2>
-
-    <p class="split-top">
-      Tarif etmek zor.
-    </p>
-
-    <p class="split-bottom">
-      İlk an: ferah  
-      Sonra: yumuşak  
-      En son: sakin  
-      <br><br>
-      Abartı yok.  
-      Sadece temiz bir his.
-    </p>
-  </div>
-
-</section>
-
-
-<section class="split white">
-
-  <div>
-    <h2 class="split-title">
-      Her şey neden tek cihazda?
-    </h2>
-
-    <p class="split-top">
-      Karmaşa olmasın diye.
-    </p>
-
-    <p class="split-bottom">
-      Ayrı ayrı cihazlar yerine  
-      tek bir sistem.  
-      Daha az kablo.  
-      Daha sade bir alan.
-    </p>
-  </div>
-
-  <div class="image-box"></div>
-
-</section> 
-<section id="order" class="order">
-  <h2>Bu bir koku değil.<br>Bir değişim.</h2>
-  <p>VAERO ile sürüş alanını daha sakin, daha temiz ve daha kişisel hale getir.</p>
-
-  <a class="cta" href="#" onclick="openWhatsApp(); return false;">Sakinliğini Başlat</a>
-  <a class="track-link" id="trackLink" href="#">Sipariş verdiniz mi? Gönderi durumunu kontrol edin →</a>
-</section>
-
-<div class="footer">Privacy & Terms — VAERO</div>
 
 <a class="floating-wa" href="#" onclick="openWhatsApp(); return false;">Whatsapp</a>
 
+<div class="footer">Privacy & Terms — VAERO</div>
+
 <script>
-const SUPABASE_URL="https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/events";
-const SUPABASE_KEY="sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN";
-
 const WHATSAPP_NUMBER="905391152765";
-const SALES_PAGE_URL="sales.html";
-const TRACK_PAGE_URL="https://project-dn5qk.vercel.app";
-
-document.getElementById("trackLink").href=TRACK_PAGE_URL;
-
-function track(eventName,meta={}){
-  fetch(SUPABASE_URL,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "apikey":SUPABASE_KEY,
-      "Authorization":"Bearer "+SUPABASE_KEY
-    },
-    body:JSON.stringify({
-      event_name:eventName,
-      page:window.location.pathname,
-      meta:meta
-    }),
-    keepalive:true
-  }).catch(()=>{});
-}
 
 function openWhatsApp(){
-  track("whatsapp_click",{source:"sales_page"});
-  const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak ve sipariş vermek istiyorum.");
+  const msg=encodeURIComponent("Merhaba, VAERO deneyim paketi hakkında bilgi almak istiyorum.");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
 }
-
-track("sales_page_view",{device:navigator.userAgent});
-
-let s25=false,s50=false,s75=false,s90=false;
-
-window.addEventListener("scroll",()=>{
-  const p=(window.scrollY+window.innerHeight)/document.body.scrollHeight;
-  if(p>.25&&!s25){s25=true;track("sales_scroll_25")}
-  if(p>.50&&!s50){s50=true;track("sales_scroll_50")}
-  if(p>.75&&!s75){s75=true;track("sales_scroll_75")}
-  if(p>.90&&!s90){s90=true;track("sales_scroll_90")}
-});
-
-setTimeout(()=>track("sales_time_15s"),15000);
-setTimeout(()=>track("sales_time_30s"),30000);
-setTimeout(()=>track("sales_time_60s"),60000);
 </script>
 
 </body>
