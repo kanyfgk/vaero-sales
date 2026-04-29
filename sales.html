@@ -460,7 +460,7 @@ VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
 
   <div class="image-box"></div>
 </section>
-<section class="split white">
+<section id="sales" class="split white">
 
   <div>
     <h2 class="split-title">
@@ -508,7 +508,7 @@ VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
 </section>
 
 
-<section id="sales" class="split white">
+<section class="split white">
 
   <div>
     <h2 class="split-title">
@@ -616,11 +616,6 @@ function track(eventName,meta={}){
     }),
     keepalive:true
   }).catch(()=>{});
-}
-
-function goSales(){
-  track("hero_cta_click",{target:"sales"});
-  window.location.href=SALES_PAGE_URL;
 }
 
 function openWhatsApp(){
