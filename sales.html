@@ -390,7 +390,11 @@ function trackEvent(eventName, meta = {}) {
     body: JSON.stringify({
       event_name: eventName,
       page: "sales",
-      meta: meta
+      meta: {
+  ...meta,
+  device: window.innerWidth <= 767 ? "mobile" : window.innerWidth <= 1024 ? "tablet" : "desktop",
+  width: window.innerWidth
+}
     }),
     keepalive: true
   }).catch(()=>{});
@@ -409,7 +413,7 @@ trackEvent("page_view",{page:"sales"});
 
   const height = document.body.scrollHeight - window.innerHeight;
 
-  const ratio = scroll / height;
+  const ratio = height > 0 ? scroll / height : 0;
 
   const wa = document.querySelector(".floating-wa");
 
