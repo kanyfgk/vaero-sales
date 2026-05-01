@@ -384,13 +384,19 @@ body{
 <script>
 const WHATSAPP_NUMBER="905391152765";
 
+function getDeviceType(){
+  const w = window.innerWidth;
+  if(w <= 767) return "mobile";
+  if(w <= 1024) return "tablet";
+  return "desktop";
+}
+
 function openWhatsApp(){
   trackEvent("whatsapp_click",{source:"floating_whatsapp",page:"home"});
   const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak istiyorum");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
 }
 
-/* BURAYA EKLİYORSUN */
 function trackEvent(eventName, meta = {}) {
   fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/events", {
     method: "POST",
@@ -401,13 +407,18 @@ function trackEvent(eventName, meta = {}) {
     },
     body: JSON.stringify({
       event_name: eventName,
-      page: "sales",
-      meta: meta
+      page: "home",
+      meta: {
+        ...meta,
+        device: getDeviceType(),
+        width: window.innerWidth
+      }
     }),
     keepalive: true
   }).catch(()=>{});
 }
-trackEvent("page_view",{page:"sales"});
+
+trackEvent("page_view",{page:"home"});
 </script>
 
 </body>
