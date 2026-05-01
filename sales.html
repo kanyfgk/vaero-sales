@@ -268,19 +268,28 @@ p{
 </section>
 
 <section class="final">
-  <h2>Mevcut partiyi sor.</h2>
-  <p>
-  Mevcut parti, fiyat ve teslim süresini netleştirmek için WhatsApp’tan yaz.
+  <h2>Karar vermek zorunda değilsin.</h2>
+
+<p>
+Önce mevcut durumu öğren.<br>
+Stok, fiyat ve teslim süresi netleşsin.<br><br>
+
+Sonra istersen devam edersin.
 </p>
 
-  <a class="btn" href="#" onclick="openWhatsApp(); return false;">
+  <a class="btn" href="#" onclick="openWhatsApp('sales_main_cta'); return false;">
     Mesaj gönder
   </a>
 </section>
 
-<a class="floating-wa" href="#" onclick="openWhatsApp(); return false;">Whatsapp</a>
+<a class="floating-wa" href="#" onclick="openWhatsApp('floating_button'); return false;">Whatsapp</a>
 
-<div class="footer">Privacy & Terms — VAERO</div>
+<div class="footer">
+  <a href="https://vaero-policy.my.canva.site/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">
+    Privacy & Terms
+  </a>
+  — VAERO
+</div>
 
 <script>
 const WHATSAPP_NUMBER="905391152765";
@@ -302,9 +311,9 @@ function trackEvent(eventName, meta = {}) {
   }).catch(()=>{});
 }
 
-function openWhatsApp(){
-  trackEvent("whatsapp_click",{source:"sales_cta",page:"sales"});
-  const msg=encodeURIComponent("Merhaba, VAERO deneyim paketi hakkında bilgi almak istiyorum. Mevcut parti, fiyat ve teslim süresi hakkında bilgi alabilir miyim?");
+function openWhatsApp(source="unknown"){
+  trackEvent("whatsapp_click",{source:source,page:"sales"});
+  const msg=encodeURIComponent("Merhaba, VAERO için mevcut stok, fiyat ve teslim süresini öğrenmek istiyorum.");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
 }
 
