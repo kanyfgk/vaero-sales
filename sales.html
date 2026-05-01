@@ -270,8 +270,8 @@ p{
 <section class="final">
   <h2>Mevcut partiyi sor.</h2>
   <p>
-    Fiyat, teslim durumu ve paket bilgisi için WhatsApp’tan yaz.
-  </p>
+  Mevcut parti, fiyat ve teslim süresini netleştirmek için WhatsApp’tan yaz.
+</p>
 
   <a class="btn" href="#" onclick="openWhatsApp(); return false;">
     WhatsApp’tan Bilgi Al
@@ -285,10 +285,30 @@ p{
 <script>
 const WHATSAPP_NUMBER="905391152765";
 
+function trackEvent(eventName, meta = {}) {
+  fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/events", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN",
+      "Authorization": "Bearer sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN"
+    },
+    body: JSON.stringify({
+      event_name: eventName,
+      page: "sales",
+      meta: meta
+    }),
+    keepalive: true
+  }).catch(()=>{});
+}
+
 function openWhatsApp(){
-  const msg=encodeURIComponent("Merhaba, VAERO deneyim paketi hakkında bilgi almak istiyorum.");
+  trackEvent("whatsapp_click",{source:"sales_cta",page:"sales"});
+  const msg=encodeURIComponent("Merhaba, VAERO deneyim paketi hakkında bilgi almak istiyorum. Mevcut parti, fiyat ve teslim süresi hakkında bilgi alabilir miyim?");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
 }
+
+trackEvent("page_view",{page:"sales"});
 </script>
 
 </body>
