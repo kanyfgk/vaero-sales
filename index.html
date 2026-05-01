@@ -287,6 +287,7 @@ body{
   Atmosferi Keşfet
 </button>
 
+  </div>
 </section>
 
 <section class="cards-section">
@@ -379,11 +380,12 @@ body{
 <a class="floating-wa" href="#" onclick="openWhatsApp(); return false;">Whatsapp</a>
 
 <div class="footer">Privacy & Terms — VAERO</div>
-
+  
 <script>
 const WHATSAPP_NUMBER="905391152765";
 
 function openWhatsApp(){
+  trackEvent("whatsapp_click",{source:"floating_whatsapp",page:"home"});
   const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak istiyorum");
   window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
 }
@@ -399,12 +401,13 @@ function trackEvent(eventName, meta = {}) {
     },
     body: JSON.stringify({
       event_name: eventName,
-      page: "index",
+      page: "sales",
       meta: meta
     }),
     keepalive: true
   }).catch(()=>{});
 }
+trackEvent("page_view",{page:"sales"});
 </script>
 
 </body>
