@@ -240,31 +240,125 @@ body{
 }
 
 @media(max-width:900px){
+  body{
+    overflow-x:hidden;
+  }
+
   .hero{
-    padding:40px 6%;
+    min-height:auto;
+    padding:70px 6% 80px;
     align-items:flex-start;
   }
 
   .hero-card{
     width:100%;
     height:auto;
-    min-height:450px;
+    min-height:auto;
+    padding:34px 24px;
   }
 
   .hero-visual{
-    opacity:.25;
+    width:300px;
+    height:300px;
     right:-120px;
+    top:80px;
+    opacity:.20;
   }
 
-  .cards,.split{
-    grid-template-columns:1fr;
+  .logo{
+    font-size:42px;
+    line-height:42px;
+    letter-spacing:5px;
+    margin-top:0;
+  }
+
+  .sub{
+    margin-bottom:48px;
+  }
+
+  .hero-text{
+    font-size:16px;
+    line-height:27px;
+    margin-bottom:42px;
   }
 
   .hero-btn{
     width:100%;
+    text-align:center;
+    margin-top:10px;
   }
 
-  h2,.split-title{font-size:38px}
+  .cards-section{
+    padding:80px 6%;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .card{
+    height:auto;
+    min-height:190px;
+  }
+
+  .split{
+    grid-template-columns:1fr;
+    gap:38px;
+    padding:90px 6%;
+  }
+
+  .split-title{
+    font-size:34px;
+    line-height:118%;
+  }
+
+  .split-top,
+  .split-bottom{
+    font-size:16px;
+    line-height:27px;
+  }
+
+  .image-box{
+    width:100%;
+    max-width:100%;
+    height:280px;
+  }
+
+  .final{
+    padding:90px 6%;
+  }
+
+  .final h2{
+    font-size:34px;
+    line-height:118%;
+  }
+
+  .final p{
+    font-size:16px;
+    line-height:27px;
+  }
+
+  .cta{
+    width:100%;
+    text-align:center;
+  }
+
+  .track-link{
+    text-align:center;
+    line-height:24px;
+  }
+
+  .floating-wa{
+    right:16px;
+    bottom:16px;
+    padding:14px 22px;
+    font-size:13px;
+  }
+
+  .footer{
+    padding:34px 6%;
+  }
 }
 </style>
 </head>
