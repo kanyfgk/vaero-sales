@@ -414,6 +414,68 @@ Sonra istersen devam edersin.
 </div>
 
 <script>
+  const lang = navigator.language.slice(0,2);
+
+const texts = {
+  tr: {
+    heroTitle: "Not a product. Bir atmosfer sistemi.",
+    heroSub: "VAERO, araç içindeki karmaşayı azaltır. Daha sade, daha kontrollü bir deneyim sunar.",
+    heroBtn: "Detayları gör",
+    packageTitle: "Paketin içinde ne var?",
+    packageText: "VAERO cihaz ve başlangıç için özel seçilmiş 1 koku birlikte gelir. İlk kullanım için ayrıca parça aramana gerek kalmaz.",
+    stockTitle: "Stok yapısı",
+    stockText: "VAERO sürekli stok mantığıyla çalışmaz. Ürünler belirli aralıklarla sınırlı şekilde gelir. Bu yüzden sipariş öncesinde mevcut durum ve teslim süresi WhatsApp üzerinden netleşir.",
+    finalTitle: "Karar vermek zorunda değilsin.",
+    finalText: "Önce mevcut durumu öğren. Stok, fiyat ve teslim süresi netleşsin. Sonra istersen devam edersin.",
+    finalBtn: "Durumu öğren",
+    floatingBtn: "Durum sor"
+  },
+  en: {
+    heroTitle: "Not a product. A controlled atmosphere.",
+    heroSub: "VAERO reduces the noise inside your car. A cleaner, calmer and more controlled experience.",
+    heroBtn: "View details",
+    packageTitle: "What’s inside the package?",
+    packageText: "VAERO comes with the device and 1 selected fragrance for the first experience. No extra parts are needed to begin.",
+    stockTitle: "Stock structure",
+    stockText: "VAERO does not operate with constant bulk stock. Products arrive in limited batches. Availability and delivery timing are confirmed through WhatsApp before ordering.",
+    finalTitle: "You don’t have to decide now.",
+    finalText: "First, check availability. Let the stock, price and delivery time become clear. Then continue only if it feels right.",
+    finalBtn: "Check availability",
+    floatingBtn: "Ask status"
+  },
+  fa: {
+    heroTitle: "یک محصول نیست. یک فضای کنترل‌شده است.",
+    heroSub: "VAERO شلوغی داخل خودرو را کمتر می‌کند و تجربه‌ای ساده‌تر، آرام‌تر و کنترل‌شده‌تر می‌سازد.",
+    heroBtn: "مشاهده جزئیات",
+    packageTitle: "داخل بسته چیست؟",
+    packageText: "VAERO همراه با دستگاه و یک رایحه منتخب برای شروع تجربه ارائه می‌شود. برای شروع به قطعه اضافی نیاز نیست.",
+    stockTitle: "ساختار موجودی",
+    stockText: "VAERO با موجودی انبوه دائمی کار نمی‌کند. محصولات در سری‌های محدود عرضه می‌شوند. موجودی و زمان تحویل پیش از سفارش از طریق واتساپ مشخص می‌شود.",
+    finalTitle: "لازم نیست همین حالا تصمیم بگیرید.",
+    finalText: "ابتدا وضعیت موجودی، قیمت و زمان تحویل را بررسی کنید. سپس اگر مناسب بود ادامه دهید.",
+    finalBtn: "بررسی وضعیت",
+    floatingBtn: "پرسش وضعیت"
+  },
+  ru: {
+    heroTitle: "Не продукт. Контролируемая атмосфера.",
+    heroSub: "VAERO убирает лишний шум внутри автомобиля и создает более спокойный, чистый и контролируемый опыт.",
+    heroBtn: "Посмотреть детали",
+    packageTitle: "Что входит в комплект?",
+    packageText: "VAERO поставляется с устройством и одним выбранным ароматом для первого опыта. Для начала не нужны дополнительные детали.",
+    stockTitle: "Структура наличия",
+    stockText: "VAERO не работает по принципу постоянного массового склада. Товары поступают ограниченными партиями. Наличие и сроки доставки уточняются через WhatsApp перед заказом.",
+    finalTitle: "Вам не нужно решать сразу.",
+    finalText: "Сначала уточните наличие, цену и срок доставки. Затем продолжайте, если это вам подходит.",
+    finalBtn: "Уточнить наличие",
+    floatingBtn: "Спросить статус"
+  }
+};
+
+const t = texts[lang] || texts.en;
+
+if(lang === "fa"){
+  document.body.dir = "rtl";
+}
 const WHATSAPP_NUMBER="905391152765";
 
 function trackEvent(eventName, meta = {}) {
@@ -475,7 +537,21 @@ trackEvent("page_view",{page:"sales"});
   }
 
 });
-  
+document.querySelector(".hero h1").innerText = t.heroTitle;
+document.querySelector(".hero p").innerText = t.heroSub;
+document.querySelector(".hero .btn").innerText = t.heroBtn;
+
+document.querySelector("#package h2").innerText = t.packageTitle;
+document.querySelector("#package p").innerText = t.packageText;
+
+document.querySelector(".dark-section h2").innerText = t.stockTitle;
+document.querySelector(".dark-section p").innerText = t.stockText;
+
+document.querySelector(".final h2").innerText = t.finalTitle;
+document.querySelector(".final p").innerText = t.finalText;
+document.querySelector(".final .btn").innerText = t.finalBtn;
+
+document.querySelector(".floating-wa").innerText = t.floatingBtn;  
 </script>
 
 </body>
