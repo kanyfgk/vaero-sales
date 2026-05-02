@@ -14,6 +14,13 @@ body{
   background:#f3efe7;
   color:#333;
   font-family:Arial, sans-serif;
+  opacity:0;
+  filter:blur(6px);
+  transition:all .6s ease;
+}
+  body.loaded{
+opacity:1;
+filter:blur(0);
 }
 .track-link{
   display:block;
@@ -529,6 +536,10 @@ function trackEvent(eventName, meta = {}) {
 
 trackEvent("page_view",{page:"home"});
 </script>
-
+<script>
+window.addEventListener("load", function(){
+  document.body.classList.add("loaded");
+});
+</script>
 </body>
 </html>
