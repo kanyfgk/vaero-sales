@@ -541,5 +541,50 @@ window.addEventListener("load", function(){
   document.body.classList.add("loaded");
 });
 </script>
+  <script>
+const lang = navigator.language.slice(0,2);
+
+const texts = {
+  tr: {
+    heroTitle: "Bir ürün değil. Kontrollü bir atmosfer.",
+    heroSub: "VAERO, araç içindeki karmaşayı azaltır. Daha sade ve kontrollü bir deneyim sunar.",
+    cta: "Detayları gör"
+  },
+  en: {
+    heroTitle: "Not a product. An atmosphere system.",
+    heroSub: "VAERO reduces complexity inside your car. A cleaner, more controlled experience.",
+    cta: "Explore"
+  },
+  ru: {
+    heroTitle: "Не продукт. Атмосфера.",
+    heroSub: "VAERO упрощает пространство в автомобиле.",
+    cta: "Подробнее"
+  },
+  fa: {
+    heroTitle: "فقط یک محصول نیست. یک فضاست.",
+    heroSub: "VAERO فضای داخل خودرو را ساده‌تر می‌کند.",
+    cta: "مشاهده"
+  }
+};
+
+const t = texts[lang] || texts.en;
+
+// HERO BAŞLIK
+const h1 = document.querySelector(".hero h1");
+if (h1) h1.innerText = t.heroTitle;
+
+// ALT METİN
+const p = document.querySelector(".hero p");
+if (p) p.innerText = t.heroSub;
+
+// BUTON
+const btn = document.querySelector(".btn");
+if (btn) btn.innerText = t.cta;
+
+// FARSÇA RTL
+if(lang === "fa"){
+  document.body.dir = "rtl";
+}
+</script>
 </body>
 </html>
