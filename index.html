@@ -585,6 +585,25 @@ if (btn) btn.innerText = t.cta;
 if(lang === "fa"){
   document.body.dir = "rtl";
 }
+    window.addEventListener("scroll", function() {
+  const scroll = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const ratio = height > 0 ? scroll / height : 0;
+
+  const wa = document.querySelector(".floating-wa");
+  if (!wa) return;
+
+  if (ratio > 0.85) {
+    wa.style.opacity = "0";
+    wa.style.pointerEvents = "none";
+  } else if (ratio > 0.6) {
+    wa.style.opacity = "0.3";
+    wa.style.pointerEvents = "auto";
+  } else {
+    wa.style.opacity = "1";
+    wa.style.pointerEvents = "auto";
+  }
+});
 </script>
 </body>
 </html>
