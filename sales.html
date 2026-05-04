@@ -389,6 +389,21 @@ p{
 
   <div class="visual"></div>
 </section>
+  <section class="section" id="order">
+  <div style="max-width:520px;margin:auto">
+
+    <h2>Sipariş oluştur</h2>
+
+    <input id="name" placeholder="İsim" style="width:100%;padding:14px;margin-bottom:12px">
+    <input id="phone" placeholder="Telefon" style="width:100%;padding:14px;margin-bottom:12px">
+    <input id="product" placeholder="Ürün (örn: VAERO + White Tea)" style="width:100%;padding:14px;margin-bottom:12px">
+
+    <button onclick="createOrder()" class="btn" style="width:100%">
+      Siparişi gönder
+    </button>
+
+  </div>
+</section>
 <section class="final">
   <h2>Karar vermek zorunda değilsin.</h2>
 
@@ -552,6 +567,33 @@ document.querySelector(".final p").innerText = t.finalText;
 document.querySelector(".final .btn").innerText = t.finalBtn;
 
 document.querySelector(".floating-wa").innerText = t.floatingBtn;  
+  async function createOrder(){
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const product = document.getElementById("product").value;
+
+  if(!name || !phone){
+    alert("İsim ve telefon zorunlu");
+    return;
+  }
+
+  await fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/siparisler", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "apikey":"sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN",
+      "Authorization":"Bearer sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN"
+    },
+    body:JSON.stringify({
+      isim:name,
+      telefon:phone,
+      urun:product
+    })
+  });
+
+  alert("Sipariş alındı");
+}
 </script>
 
 </body>
