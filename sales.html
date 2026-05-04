@@ -389,22 +389,6 @@ p{
 
   <div class="visual"></div>
 </section>
-  <section class="section" id="order">
-  <div style="max-width:520px;margin:auto">
-    <h2>İletişim bırak</h2>
-
-    <p style="color:rgba(255,255,255,.78);margin-bottom:22px">
-      İsminiz ve telefon numaranız yalnızca VAERO sipariş sürecini kolaylaştırmak için alınır.
-    </p>
-
-    <input id="name" placeholder="İsim" style="width:100%;padding:14px;margin-bottom:12px">
-    <input id="phone" placeholder="Telefon" style="width:100%;padding:14px;margin-bottom:12px">
-
-    <button onclick="leadAndWhatsApp()" class="btn" style="width:100%">
-      WhatsApp’tan devam et
-    </button>
-  </div>
-</section>
 <section class="final">
   <h2>Karar vermek zorunda değilsin.</h2>
 
@@ -568,56 +552,37 @@ document.querySelector(".final p").innerText = t.finalText;
 document.querySelector(".final .btn").innerText = t.finalBtn;
 
 document.querySelector(".floating-wa").innerText = t.floatingBtn;  
-  async function leadAndWhatsApp(){
+  <script>
+async function leadAndWhatsApp(source = "sales_unknown") {
+  const phoneNumber = "905391152765";
+  const message = encodeURIComponent("Hello, I would like to get more information about VAERO.");
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-
-  if(!name || !phone){
-    alert("Lütfen isim ve telefon gir.");
-    return;
+  try {
+    await fetch("https://wpfiszxzlwkmaqcqmwa.supabase.co/rest/v1/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN",
+        "Authorization": "Bearer sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN"
+      },
+      body: JSON.stringify({
+        event_name: "whatsapp_click",
+        page: "sales",
+        source: source,
+        timestamp: new Date().toISOString(),
+        meta: {
+          url: window.location.href,
+          device: navigator.userAgent
+        }
+      })
+    });
+  } catch (error) {
+    console.log(error);
   }
 
-  // 🔥 SUPABASE'E KAYDET
-  fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/siparisler", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "apikey": "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN",
-      "Authorization": "Bearer sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN"
-    },
-    body: JSON.stringify({
-      isim: name,
-      telefon: phone,
-      urun: "ilk temas",
-      durum: "yeni"
-    })
-  });
-
-  // 🔥 WHATSAPP'A GÖNDER
-  const msg = encodeURIComponent(
-    "Merhaba, ben " + name + ". VAERO hakkında bilgi almak istiyorum."
-  );
-
-  window.location.href = "https://wa.me/905391152765?text=" + msg;
+  window.location.href = https://wa.me/${phoneNumber}?text=${message};
 }
-
-  await fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/siparisler", {
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "apikey":"sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN",
-      "Authorization":"Bearer sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN"
-    },
-    body:JSON.stringify({
-      isim:name,
-      telefon:phone,
-      urun:product
-    })
-  });
-
-  alert("Sipariş alındı");
-}
+</script>
 </script>
 
 </body>
