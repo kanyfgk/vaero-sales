@@ -203,6 +203,45 @@ p{
   box-shadow:0 18px 45px rgba(0,0,0,.10);
 }
 
+  .scene-photo{
+  position:relative;
+  overflow:hidden;
+}
+
+.scene-photo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1);
+  animation:slowZoom 14s ease-in-out infinite alternate;
+  transition:transform 1s ease;
+}
+
+.scene-photo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top,rgba(5,10,18,.55),rgba(5,10,18,.15)),
+    radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.28));
+}
+
+.scene-package::before{
+  background-image:url("https://raw.githubusercontent.com/kanyfgk/vaero-sat%C4%B1%C5%9Flar/main/cihaz-genel-gorunumjpg.jpeg");
+}
+
+@keyframes slowZoom{
+  from{
+    transform:scale(1) translateX(0px);
+  }
+
+  to{
+    transform:scale(1.08) translateX(-10px);
+  }
+}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -446,7 +485,7 @@ p{
       İlk kullanım için ayrıca parça aramana gerek kalmaz.
     </p>
   </div>
-  <div class="visual"></div>
+  <div class="visual scene-photo scene-package"></div>
 </section>
 
 <section class="section">
