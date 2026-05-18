@@ -600,26 +600,28 @@ filter:blur(0);
 }
 
   @media(max-width:900px){
-
   body{
     overflow-x:hidden;
   }
 
   .premium-hero{
-    padding:0;
-    background:#06101b;
+    min-height:auto;
+    padding:64px 6% 70px;
+    background:
+      linear-gradient(90deg,rgba(6,14,22,.85),rgba(12,30,48,.55),rgba(20,35,52,.25)),
+      radial-gradient(circle at 75% 45%,rgba(220,235,255,.38),transparent 12%),
+      linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
+    position:relative;
+    overflow:hidden;
   }
 
   .premium-hero-inner{
     position:relative;
     min-height:auto;
-    padding:64px 6% 70px;
     border-radius:0;
-    overflow:hidden;
-    background:
-      linear-gradient(90deg,rgba(6,14,22,.85),rgba(12,30,48,.55),rgba(20,35,52,.25)),
-      radial-gradient(circle at 75% 45%,rgba(220,235,255,.38),transparent 12%),
-      linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
+    overflow:visible;
+    background:transparent;
+    box-shadow:none;
   }
 
   .premium-visual{
@@ -636,6 +638,7 @@ filter:blur(0);
     width:100%;
     height:100%;
     object-fit:cover;
+    display:block;
   }
 
   .premium-hero-inner::after{
@@ -643,19 +646,22 @@ filter:blur(0);
   }
 
   .premium-copy{
-    position:relative;
-    z-index:2;
-    left:auto;
-    top:auto;
     width:100%;
+    height:auto;
     min-height:auto;
     margin:0;
     padding:34px 24px;
-    border-radius:0;
     background:linear-gradient(180deg,#0b1620 0%,#1a3550 80%);
     opacity:.90;
     backdrop-filter:blur(10px);
     box-shadow:0 6px 20px rgba(0,0,0,.25);
+    position:relative;
+    z-index:2;
+    left:auto;
+    top:auto;
+    display:flex;
+    flex-direction:column;
+    border-radius:0;
   }
 
   .premium-copy::after{
@@ -673,34 +679,37 @@ filter:blur(0);
   .premium-copy .sub{
     font-size:12px;
     line-height:20px;
-    margin-bottom:46px;
     color:#bfc7d1;
+    letter-spacing:1px;
+    margin-bottom:46px;
   }
 
   .premium-copy .hero-text{
     font-size:16px;
     line-height:27px;
-    margin-bottom:42px;
     color:#e5e7eb;
     opacity:.70;
+    margin-bottom:42px;
   }
 
   .premium-copy .hero-btn{
+    display:block;
     width:100%;
     height:54px;
     margin-top:0;
     padding:16px 40px;
-    border-radius:8px;
     background:#e6d7b0;
     color:#0b1620;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.13);
     font-size:14px;
     text-align:left;
+    opacity:.95;
     box-shadow:0 6px 20px rgba(0,0,0,.25);
   }
 
   .premium-cards{
     position:relative;
-    z-index:4;
     grid-template-columns:1fr;
     gap:22px;
     background:#f3efe7;
