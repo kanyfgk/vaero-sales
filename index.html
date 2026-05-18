@@ -709,20 +709,25 @@ filter:blur(0);
   }
 
   .premium-card{
-    height:auto;
-    min-height:210px;
-    padding:26px;
-    border-radius:14px;
-    background:linear-gradient(145deg,#1c293b,#2d415b);
-    border:0;
-  }
+  height:auto;
+  min-height:210px;
+  padding:26px;
+  border-radius:14px;
+  background:linear-gradient(145deg,#1c293b,#2d415b);
+  border:0;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
 
   .premium-card h3{
-    font-family:"Oswald",Arial,sans-serif;
-    font-size:34px;
-    margin-bottom:40px;
-    color:white;
-  }
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:34px;
+  margin-bottom:92px;
+  color:white;
+  line-height:1;
+}
 
   .premium-card p{
     font-size:20px;
