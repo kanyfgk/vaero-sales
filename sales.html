@@ -451,9 +451,52 @@ p{
   .package-scene{
   position:relative;
   overflow:hidden;
+  background:#050b12;
+  isolation:isolate;
+}
+
+.package-scene::before{
+  content:"";
+  position:absolute;
+  inset:-8%;
+
+  background-image:url("https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-package-cinematic.webp.jpeg");
+
+  background-size:cover;
+  background-position:center;
+
+  transform:scale(1);
+  animation:packageZoom 16s ease-in-out infinite alternate;
+
+  filter:
+    brightness(.88)
+    contrast(1.08)
+    saturate(.92);
+
+  z-index:1;
+}
+
+.package-scene::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
   background:
-    radial-gradient(circle at 68% 32%,rgba(120,170,255,.25),transparent 24%),
-    linear-gradient(145deg,#07111d,#17283d 58%,#2d415b);
+    radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.42)),
+    linear-gradient(to top,rgba(3,8,15,.72),rgba(3,8,15,.12));
+
+  z-index:2;
+  pointer-events:none;
+}
+
+@keyframes packageZoom{
+  from{
+    transform:scale(1) translateY(0px);
+  }
+
+  to{
+    transform:scale(1.08) translateY(-10px);
+  }
 }
 
 .package-bg{
