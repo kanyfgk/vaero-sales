@@ -458,12 +458,13 @@ p{
 .package-scene::before{
   content:"";
   position:absolute;
-  inset:-8%;
+  inset:0;
+background-size:contain;
+background-repeat:no-repeat;
 
   background-image:url("https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-package-cinematic.webp.jpeg");
 
-  background-size:cover;
-  background-position:center;
+  background-position:center center;
 
   transform:scale(1);
   animation:packageZoom 16s ease-in-out infinite alternate;
@@ -495,7 +496,7 @@ p{
   }
 
   to{
-    transform:scale(1.08) translateY(-10px);
+    transform:scale(1.03) translateY(-4px);
   }
 }
 
