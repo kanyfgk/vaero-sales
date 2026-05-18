@@ -447,6 +447,80 @@ p{
     transform:scale(1.03) translateY(0px);
   }
 }
+
+  .package-scene{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 68% 32%,rgba(120,170,255,.25),transparent 24%),
+    linear-gradient(145deg,#07111d,#17283d 58%,#2d415b);
+}
+
+.package-bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.05),transparent 38%),
+    radial-gradient(circle at 30% 80%,rgba(230,215,176,.12),transparent 28%);
+  z-index:1;
+}
+
+.package-device{
+  position:absolute;
+  right:8%;
+  bottom:8%;
+  width:42%;
+  max-height:82%;
+  object-fit:contain;
+  z-index:3;
+  filter:brightness(.82) contrast(1.08) saturate(.9);
+  animation:deviceFloat 12s ease-in-out infinite;
+}
+
+.package-fragrance{
+  position:absolute;
+  bottom:12%;
+  width:15%;
+  object-fit:contain;
+  z-index:4;
+  filter:brightness(.9) contrast(1.05);
+}
+
+.fragrance-1{left:12%; animation:bottleFloat 10s ease-in-out infinite;}
+.fragrance-2{left:29%; animation:bottleFloat 11s ease-in-out infinite reverse;}
+.fragrance-3{left:46%; animation:bottleFloat 12s ease-in-out infinite;}
+
+.package-glow{
+  position:absolute;
+  inset:auto 0 0 0;
+  height:55%;
+  background:linear-gradient(to top,rgba(3,10,18,.72),transparent);
+  z-index:5;
+  pointer-events:none;
+}
+
+.package-scene::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(5,12,22,.35),transparent 50%,rgba(5,12,22,.25)),
+    radial-gradient(circle at center,transparent 25%,rgba(0,0,0,.38));
+  z-index:6;
+  pointer-events:none;
+}
+
+@keyframes deviceFloat{
+  0%{transform:scale(1) translateY(0);}
+  50%{transform:scale(1.04) translateY(-6px);}
+  100%{transform:scale(1) translateY(0);}
+}
+
+@keyframes bottleFloat{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-5px);}
+  100%{transform:translateY(0);}
+}
   
 </style>
 </head>
@@ -485,7 +559,17 @@ p{
       İlk kullanım için ayrıca parça aramana gerek kalmaz.
     </p>
   </div>
-  <div class="visual scene-photo scene-package"></div>
+  <div class="visual package-scene">
+  <div class="package-bg"></div>
+
+  <img class="package-device" src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/cihaz-genel-gorunum.jpg.jpeg">
+
+  <img class="package-fragrance fragrance-1" src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/koku-kologne.jpg.jpeg">
+  <img class="package-fragrance fragrance-2" src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/koku-shangrila.jpg.jpeg">
+  <img class="package-fragrance fragrance-3" src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/koku-sweetflower.jpg.jpeg">
+
+  <div class="package-glow"></div>
+</div>
 </section>
 
 <section class="section">
