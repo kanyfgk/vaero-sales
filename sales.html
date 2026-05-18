@@ -45,6 +45,33 @@ body{
   height:100%;
   object-fit:cover;
   display:block;
+
+  filter:
+    brightness(.72)
+    contrast(1.08)
+    saturate(.82);
+
+  transform:scale(1.03);
+}
+
+  .hero-visual{
+  position:relative;
+}
+
+.hero-visual::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7,17,29,.38) 0%,
+      rgba(7,17,29,.10) 35%,
+      rgba(7,17,29,.18) 100%
+    );
+
+  pointer-events:none;
 }
 
 .logo{
