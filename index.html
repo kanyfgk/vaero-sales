@@ -600,13 +600,13 @@ filter:blur(0);
 }
 
   @media(max-width:900px){
+
   body{
     overflow-x:hidden;
   }
 
   .premium-hero{
-    min-height:auto;
-    padding:64px 6% 70px;
+    padding:64px 6% 0;
     background:
       linear-gradient(90deg,rgba(6,14,22,.85),rgba(12,30,48,.55),rgba(20,35,52,.25)),
       radial-gradient(circle at 75% 45%,rgba(220,235,255,.38),transparent 12%),
@@ -616,12 +616,16 @@ filter:blur(0);
   }
 
   .premium-hero-inner{
-    position:relative;
     min-height:auto;
     border-radius:0;
     overflow:visible;
     background:transparent;
     box-shadow:none;
+    position:relative;
+  }
+
+  .premium-hero-inner::after{
+    display:none;
   }
 
   .premium-visual{
@@ -641,39 +645,26 @@ filter:blur(0);
     display:block;
   }
 
-  .premium-hero-inner::after{
-    display:none;
-  }
-
   .premium-copy{
-    width:100%;
-    height:auto;
-    min-height:auto;
-    margin:0;
-    padding:34px 24px;
-    background:linear-gradient(180deg,#0b1620 0%,#1a3550 80%);
-    opacity:.90;
-    backdrop-filter:blur(10px);
-    box-shadow:0 6px 20px rgba(0,0,0,.25);
     position:relative;
     z-index:2;
     left:auto;
     top:auto;
-    display:flex;
-    flex-direction:column;
+    width:100%;
+    margin:0;
+    padding:34px 24px;
     border-radius:0;
-  }
-
-  .premium-copy::after{
-    display:none;
+    background:linear-gradient(180deg,#0b1620 0%,#1a3550 80%);
+    opacity:.90;
+    backdrop-filter:blur(10px);
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
   }
 
   .premium-copy .logo{
     font-size:42px;
     line-height:42px;
     letter-spacing:5px;
-    margin-top:0;
-    margin-bottom:15px;
+    margin:0 0 15px;
   }
 
   .premium-copy .sub{
@@ -693,7 +684,6 @@ filter:blur(0);
   }
 
   .premium-copy .hero-btn{
-    display:block;
     width:100%;
     height:54px;
     margin-top:0;
@@ -704,17 +694,18 @@ filter:blur(0);
     border:1px solid rgba(255,255,255,.13);
     font-size:14px;
     text-align:left;
-    opacity:.95;
     box-shadow:0 6px 20px rgba(0,0,0,.25);
   }
 
   .premium-cards{
     position:relative;
+    z-index:4;
+    display:grid;
     grid-template-columns:1fr;
     gap:22px;
     background:#f3efe7;
     padding:70px 6%;
-    margin-top:0;
+    margin:70px -6% 0;
   }
 
   .premium-card{
@@ -723,11 +714,14 @@ filter:blur(0);
     padding:26px;
     border-radius:14px;
     background:linear-gradient(145deg,#1c293b,#2d415b);
+    border:0;
   }
 
   .premium-card h3{
+    font-family:"Oswald",Arial,sans-serif;
     font-size:34px;
     margin-bottom:40px;
+    color:white;
   }
 
   .premium-card p{
