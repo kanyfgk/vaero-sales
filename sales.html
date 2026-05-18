@@ -23,6 +23,40 @@ body{
   padding:0 8%;
   background:linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
   color:white;
+
+  position:relative;
+  overflow:hidden;
+}
+
+  .hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 35% 45%,
+      rgba(66,120,255,.18),
+      transparent 42%
+    );
+
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.18),
+      rgba(0,0,0,.06) 30%,
+      rgba(0,0,0,.26)
+    );
+
+  pointer-events:none;
 }
 
 .hero-card{
