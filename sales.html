@@ -444,7 +444,7 @@ p{
   width:100%;
   height:100%;
   object-fit:contain;
-  background:#050b12
+  background:#050b12;
   display:block;
 
   filter:
@@ -453,6 +453,38 @@ p{
     saturate(1.08);
 
   transform:scale(1.02);
+}
+
+  .chaos-scene{
+  position:relative;
+  overflow:hidden;
+  background:#050b12;
+  border-radius:24px;
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.22),
+    inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.chaos-scene video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  filter:
+    brightness(.78)
+    contrast(1.18)
+    saturate(.82);
+  transform:scale(1.04);
+}
+
+.chaos-scene::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top,rgba(4,8,14,.48),transparent 45%),
+    radial-gradient(circle at center,transparent 38%,rgba(0,0,0,.42));
+  pointer-events:none;
 }
   
 </style>
@@ -520,7 +552,11 @@ p{
 
 <section class="white">
   <div class="inner">
-    <div class="visual"></div>
+    <div class="visual chaos-scene">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="vaero-chaos-before-atmosphere.mp4" type="video/mp4">
+  </video>
+</div>
 
     <div class="light-section">
       <h2>Neden ayrı ayrı değil?</h2>
