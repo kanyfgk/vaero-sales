@@ -35,14 +35,31 @@ body{
 
   background:
     radial-gradient(
-      circle at 35% 45%,
+      circle at 38% 42%,
       rgba(66,120,255,.18),
-      transparent 42%
+      transparent 34%
+    ),
+
+    radial-gradient(
+      circle at 70% 18%,
+      rgba(120,160,255,.08),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(10,18,30,.12) 0%,
+      rgba(18,38,60,.04) 28%,
+      rgba(30,60,90,.08) 48%,
+      rgba(10,18,30,.18) 100%
     );
+
+  filter:blur(2px);
+
+  opacity:.95;
 
   pointer-events:none;
 }
-
 .hero::after{
   content:"";
   position:absolute;
