@@ -318,6 +318,11 @@ p{
   body{
     overflow-x:hidden;
   }
+  .wa-whisper{
+  right:108px;
+  bottom:84px;
+  font-size:11px;
+}
 
   .hero-visual{
   display:none;
@@ -810,32 +815,29 @@ window.addEventListener("scroll", function() {
   if (ratio > 0.85) {
     wa.style.opacity = "0";
     wa.style.pointerEvents = "none";
-  } else {
-    wa.style.opacity = "1";
-    wa.style.pointerEvents = "auto";
+    if(whisper) whisper.classList.remove("show");
+    return;
   }
+
+  wa.style.opacity = "1";
+  wa.style.pointerEvents = "auto";
 
   if(whisper && whySection){
 
     const rect = whySection.getBoundingClientRect();
 
-    const trigger =
-      rect.top < window.innerHeight * 0.85 &&
-      rect.bottom > window.innerHeight * 0.15 &&
-      wa.style.opacity !== "0";
+    const inZone =
+      rect.top < window.innerHeight * 0.78 &&
+      rect.bottom > window.innerHeight * 0.22;
 
-    if(trigger){
+    if(inZone){
       whisper.classList.add("show");
-      whisper.style.opacity = "1";
-      whisper.style.transform = "translateX(0)";
     }else{
       whisper.classList.remove("show");
-      whisper.style.opacity = "0";
-      whisper.style.transform = "translateX(38px)";
     }
   }
 
-});
+}); 
 document.querySelector(".hero h1").innerText = t.heroTitle;
 </script>
 
