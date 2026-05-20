@@ -402,12 +402,11 @@ filter:blur(0);
   }
 }
 
-  /* CLEAN VAERO HERO */
+  /* VAERO HERO STABLE V1 */
 .premium-hero{
   background:#06101b;
   padding:34px 4% 60px;
   color:white;
-  position:relative;
   overflow:hidden;
 }
 
@@ -426,6 +425,7 @@ filter:blur(0);
   position:absolute;
   inset:0;
   z-index:0;
+  overflow:hidden;
 }
 
 .premium-visual video{
@@ -433,7 +433,8 @@ filter:blur(0);
   height:100%;
   object-fit:cover;
   display:block;
-  opacity:.75;
+  opacity:.78;
+  filter:brightness(.9) saturate(1.05);
 }
 
 .premium-hero-inner::after{
@@ -442,8 +443,8 @@ filter:blur(0);
   inset:0;
   z-index:1;
   background:
-    linear-gradient(90deg,rgba(3,10,18,.96),rgba(3,10,18,.68),rgba(3,10,18,.14)),
-    linear-gradient(180deg,rgba(3,10,18,.08),rgba(3,10,18,.88));
+    linear-gradient(90deg,rgba(3,10,18,.96),rgba(3,10,18,.65),rgba(3,10,18,.18)),
+    linear-gradient(180deg,rgba(3,10,18,.08),rgba(3,10,18,.84));
   pointer-events:none;
 }
 
@@ -535,21 +536,20 @@ filter:blur(0);
     min-height:auto;
     border-radius:0;
     overflow:visible;
-    box-shadow:none;
     background:transparent;
+    box-shadow:none;
   }
 
   .premium-visual{
     position:absolute;
     inset:0 0 auto 0;
-    height:620px;
+    height:560px;
     z-index:0;
-    overflow:hidden;
   }
 
   .premium-visual video{
-    opacity:.32;
-    filter:brightness(.7) saturate(1.05);
+    opacity:.36;
+    filter:brightness(.68) saturate(1.05);
   }
 
   .premium-hero-inner::after{
@@ -558,12 +558,12 @@ filter:blur(0);
 
   .premium-copy{
     position:relative;
-    z-index:3;
     left:auto;
     top:auto;
     width:100%;
+    z-index:3;
     padding:34px 24px;
-    background:linear-gradient(180deg,rgba(11,22,32,.88),rgba(26,53,80,.88));
+    background:linear-gradient(180deg,rgba(11,22,32,.9),rgba(26,53,80,.9));
     box-shadow:0 6px 20px rgba(0,0,0,.25);
   }
 
@@ -589,8 +589,8 @@ filter:blur(0);
   .premium-copy .hero-btn{
     width:100%;
     height:54px;
-    font-size:14px;
     padding:16px 40px;
+    font-size:14px;
   }
 
   .premium-cards{
