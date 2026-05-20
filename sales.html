@@ -277,43 +277,34 @@ p{
 
   .wa-whisper{
   position:fixed;
-  right:96px;
-  bottom:45px;
+  right:112px;
+  bottom:48px;
 
   font-size:11px;
   font-weight:500;
-  letter-spacing:.4px;
+  letter-spacing:.35px;
 
-  color:rgba(210,220,235,.72);
+  color:rgba(220,230,242,.78);
 
   opacity:0;
-  transform:
-    translateX(18px)
-    translateY(2px);
-
-  filter:blur(6px);
+  transform:translateX(42px);
+  filter:blur(5px);
 
   transition:
-    opacity 1.2s ease,
-    transform 1.2s ease,
-    filter 1.2s ease;
+    opacity .55s ease,
+    transform .65s cubic-bezier(.22,.61,.36,1),
+    filter .65s ease;
 
   pointer-events:none;
   z-index:98;
-
   white-space:nowrap;
 }
 
 .wa-whisper.show{
-  opacity:.82;
-
-  transform:
-    translateX(0px)
-    translateY(0px);
-
-  filter:blur(0px);
+  opacity:.9;
+  transform:translateX(0);
+  filter:blur(0);
 }
-
 .footer{
   padding:42px 8%;
   color:#8a8f98;
@@ -747,21 +738,28 @@ trackEvent("page_view",{page:"sales"});
   const whisper = document.getElementById("waWhisper");
 const whySection = document.querySelector(".white");
 
-if(whisper && whySection && !window.waWhisperShown){
+if(whisper && whySection){
 
   const rect = whySection.getBoundingClientRect();
 
   const trigger =
-    rect.top < window.innerHeight * 0.62 &&
-    rect.bottom > window.innerHeight * 0.45;
+    rect.top < window.innerHeight * 0.82 &&
+    rect.bottom > window.innerHeight * 0.25;
 
-  if(trigger){
-    window.waWhisperShown = true;
+  if(trigger && !window.waWhisperActive){
+    window.waWhisperActive = true;
+
     whisper.classList.add("show");
 
-    setTimeout(()=>{
+    clearTimeout(window.whisperTimeout);
+
+    window.whisperTimeout = setTimeout(()=>{
       whisper.classList.remove("show");
-    },5500);
+    },5600);
+  }
+
+  if(!trigger){
+    window.waWhisperActive = false;
   }
 }
 
@@ -780,11 +778,7 @@ if(whisper && whySection && !window.waWhisperShown){
     wa.style.opacity = "0";
 
     wa.style.pointerEvents = "none";
-
-  } else if (ratio > 0.6) {
-
-    wa.style.opacity = "0.3";
-
+    
   } else {
 
     wa.style.opacity = "1";
