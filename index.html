@@ -742,6 +742,12 @@ filter:blur(0);
 
 .hero-bg-video{
   display:none;
+
+  will-change: transform;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+-webkit-transform: translateZ(0);
+transform: translateZ(0);
 }
 
 @media(max-width:900px){
@@ -754,7 +760,7 @@ filter:blur(0);
     height:100%;
     object-fit:cover;
     opacity:.24;
-    filter:blur(2px) brightness(.58) saturate(1);
+    filter:brightness(.58) saturate(1);
     transform:scale(1.08);
     z-index:0;
     animation:heroAtmosphere 18s ease-in-out infinite alternate;
