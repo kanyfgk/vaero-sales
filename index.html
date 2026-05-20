@@ -807,6 +807,63 @@ transform: translateZ(0);
     }
   }
 }
+
+  /* HERO VIDEO FINAL FIX */
+.premium-hero{
+  position:relative;
+  background:#06101b;
+  overflow:hidden;
+}
+
+.premium-hero-inner{
+  position:relative;
+  overflow:hidden;
+  background:#06101b;
+}
+
+.premium-visual{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  z-index:0 !important;
+  opacity:1 !important;
+}
+
+.premium-visual video{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+  opacity:.78 !important;
+  filter:brightness(.82) saturate(1.05);
+}
+
+.premium-hero-inner::after{
+  z-index:1 !important;
+}
+
+.premium-copy,
+.premium-cards{
+  position:relative;
+  z-index:3 !important;
+}
+
+@media(max-width:900px){
+  .premium-visual{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    opacity:1 !important;
+  }
+
+  .premium-visual video{
+    opacity:.32 !important;
+    filter:brightness(.65) saturate(1.05);
+  }
+}
+  
 </style>
   <link rel="icon" href="data:,">
 </head>
@@ -814,9 +871,6 @@ transform: translateZ(0);
 <body>
 
 <section class="premium-hero">
-  <video class="hero-bg-video" autoplay muted loop playsinline preload="auto">
-  <source src="vaero-hero-video.mp4" type="video/mp4">
-</video>
   
   <div class="premium-hero-inner">
 
@@ -1055,6 +1109,13 @@ if(lang === "fa"){
     wa.style.opacity = "1";
     wa.style.pointerEvents = "auto";
   }
+});
+</script>
+  <script>
+document.querySelectorAll("video").forEach(v=>{
+  v.muted = true;
+  v.playsInline = true;
+  v.play().catch(()=>{});
 });
 </script>
 </body>
