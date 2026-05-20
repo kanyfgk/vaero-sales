@@ -266,8 +266,9 @@ filter:blur(0);
 
 @media(max-width:900px){
   body{
-    overflow-x:hidden;
-  }
+  overflow-x:hidden;
+  background:#06101b;
+}
 
   .hero{
     min-height:auto;
@@ -538,17 +539,18 @@ filter:blur(0);
   grid-template-columns:1fr;
   gap:22px;
   background:#f3efe7;
-  padding:48px 6% 64px;
+  padding:48px 4% 64px;
   margin:38px -6% 0;
   border:0;
   max-width:none;
-  overflow:visible;
+  overflow:hidden;
+  isolation:isolate;
 }
 
   .premium-hero-inner{
     min-height:auto;
     border-radius:0;
-    overflow:visible;
+    overflow:hidden;
     box-shadow:none;
     background:transparent;
   }
@@ -630,6 +632,8 @@ border-radius:0;
     background:linear-gradient(145deg,#1c293b,#2d415b);
     border:0;
     width:100%;
+    position:relative;
+    z-index:2;
     box-shadow:0 10px 30px rgba(0,0,0,.10);
 }
 
