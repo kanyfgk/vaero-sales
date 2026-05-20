@@ -494,15 +494,16 @@ filter:blur(0);
 }
 
 .premium-cards{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
+  position:relative;
   z-index:4;
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  background:rgba(3,12,21,.78);
-  border-top:1px solid rgba(255,255,255,.08);
+  grid-template-columns:1fr;
+  gap:22px;
+  background:linear-gradient(180deg,#06101b,#10263a 55%,#06101b);
+  padding:48px 6% 64px;
+  margin:0 -6%;
+  border:0;
+  overflow:hidden;
 }
 
 .premium-card{
@@ -613,7 +614,7 @@ filter:blur(0);
     min-height:190px;
     padding:26px;
     border-radius:18px;
-    background:linear-gradient(145deg,#1c293b,#2d415b);
+    background:linear-gradient(145deg,rgba(28,41,59,.82),rgba(45,65,91,.72));
     border:0;
     width:100%;
     position:relative;
