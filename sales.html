@@ -737,68 +737,6 @@ function openWhatsApp(source="unknown"){
 }
 
 trackEvent("page_view",{page:"sales"});
-  window.addEventListener("scroll", function() {
-
-  const whisper = document.getElementById("waWhisper");
-const whySection = document.querySelector(".white");
-
-if(whisper && whySection){
-
-  const rect = whySection.getBoundingClientRect();
-
-  const trigger =
-    rect.top < window.innerHeight * 0.82 &&
-    rect.bottom > window.innerHeight * 0.25;
-
-  if(trigger){
-
-  whisper.classList.add("show");
-
-  whisper.style.opacity = wa.style.opacity || "1";
-
-}else{
-
-  whisper.classList.remove("show");
-
-}
-
-  whisper.style.transform =
-  wa.style.opacity === "0"
-    ? "translateX(34px)"
-    : "translateX(0)";
-
-  if(!trigger){
-    window.waWhisperActive = false;
-  }
-}
-
-  const scroll = window.scrollY;
-
-  const height = document.body.scrollHeight - window.innerHeight;
-
-  const ratio = height > 0 ? scroll / height : 0;
-
-  const wa = document.querySelector(".floating-wa");
-
-  if (!wa) return;
-
-  if (ratio > 0.85) {
-
-    wa.style.opacity = "0";
-
-    wa.style.pointerEvents = "none";
-    
-  } else if (ratio > 0.6) {
-
-  wa.style.opacity = "0.3";
-
-} else {
-
-    wa.style.opacity = "1";
-
-    wa.style.pointerEvents = "auto";
-
-  }
 
 window.addEventListener("scroll", function() {
 
@@ -815,29 +753,28 @@ window.addEventListener("scroll", function() {
   if (ratio > 0.85) {
     wa.style.opacity = "0";
     wa.style.pointerEvents = "none";
-    if(whisper) whisper.classList.remove("show");
-    return;
+    if (whisper) whisper.classList.remove("show");
+  } else {
+    wa.style.opacity = "1";
+    wa.style.pointerEvents = "auto";
   }
 
-  wa.style.opacity = "1";
-  wa.style.pointerEvents = "auto";
-
-  if(whisper && whySection){
-
+  if (whisper && whySection && ratio <= 0.85) {
     const rect = whySection.getBoundingClientRect();
 
     const inZone =
       rect.top < window.innerHeight * 0.78 &&
       rect.bottom > window.innerHeight * 0.22;
 
-    if(inZone){
+    if (inZone) {
       whisper.classList.add("show");
-    }else{
+    } else {
       whisper.classList.remove("show");
     }
   }
 
-}); 
+});
+
 document.querySelector(".hero h1").innerText = t.heroTitle;
 </script>
 
