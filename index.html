@@ -402,11 +402,12 @@ filter:blur(0);
   }
 }
 
-  /* VAERO HERO STABLE V1 */
- .premium-hero{
+  /* CLEAN VAERO HERO */
+.premium-hero{
   background:#06101b;
   padding:34px 4% 60px;
   color:white;
+  position:relative;
   overflow:hidden;
 }
 
@@ -425,7 +426,6 @@ filter:blur(0);
   position:absolute;
   inset:0;
   z-index:0;
-  overflow:hidden;
 }
 
 .premium-visual video{
@@ -433,17 +433,17 @@ filter:blur(0);
   height:100%;
   object-fit:cover;
   display:block;
-  opacity:.78;
-  filter:brightness(.9) saturate(1.05);
+  opacity:.75;
 }
 
-.premium-overlay{
+.premium-hero-inner::after{
+  content:"";
   position:absolute;
   inset:0;
   z-index:1;
   background:
-    linear-gradient(90deg,rgba(3,10,18,.96),rgba(3,10,18,.65),rgba(3,10,18,.18)),
-    linear-gradient(180deg,rgba(3,10,18,.08),rgba(3,10,18,.84));
+    linear-gradient(90deg,rgba(3,10,18,.96),rgba(3,10,18,.68),rgba(3,10,18,.14)),
+    linear-gradient(180deg,rgba(3,10,18,.08),rgba(3,10,18,.88));
   pointer-events:none;
 }
 
@@ -456,9 +456,11 @@ filter:blur(0);
 }
 
 .premium-copy .logo{
+  font-family:"Oswald",Arial,sans-serif;
   font-size:68px;
   line-height:1;
   letter-spacing:9px;
+  color:white;
   margin:0 0 24px;
 }
 
@@ -491,11 +493,15 @@ filter:blur(0);
 }
 
 .premium-cards{
-  max-width:1320px;
-  margin:0 auto;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:4;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  background:rgba(3,12,21,.96);
+  background:rgba(3,12,21,.78);
+  border-top:1px solid rgba(255,255,255,.08);
 }
 
 .premium-card{
@@ -529,20 +535,21 @@ filter:blur(0);
     min-height:auto;
     border-radius:0;
     overflow:visible;
-    background:transparent;
     box-shadow:none;
+    background:transparent;
   }
 
   .premium-visual{
     position:absolute;
     inset:0 0 auto 0;
-    height:560px;
+    height:620px;
     z-index:0;
+    overflow:hidden;
   }
 
   .premium-visual video{
-    opacity:.36;
-    filter:brightness(.68) saturate(1.05);
+    opacity:.32;
+    filter:brightness(.7) saturate(1.05);
   }
 
   .premium-hero-inner::after{
@@ -551,12 +558,12 @@ filter:blur(0);
 
   .premium-copy{
     position:relative;
+    z-index:3;
     left:auto;
     top:auto;
     width:100%;
-    z-index:3;
     padding:34px 24px;
-    background:linear-gradient(180deg,rgba(11,22,32,.9),rgba(26,53,80,.9));
+    background:linear-gradient(180deg,rgba(11,22,32,.88),rgba(26,53,80,.88));
     box-shadow:0 6px 20px rgba(0,0,0,.25);
   }
 
@@ -582,8 +589,8 @@ filter:blur(0);
   .premium-copy .hero-btn{
     width:100%;
     height:54px;
-    padding:16px 40px;
     font-size:14px;
+    padding:16px 40px;
   }
 
   .premium-cards{
@@ -625,8 +632,22 @@ filter:blur(0);
 <body>
 
 <section class="premium-hero">
-
+  
   <div class="premium-hero-inner">
+
+    <div class="premium-copy">
+      <div class="logo">VAERO</div>
+      <div class="sub">Kişisel Atmosfer Sistemi</div>
+
+      <div class="hero-text">
+        Bu bir koku değil.<br>
+        Bir atmosfer.
+      </div>
+
+      <button class="hero-btn" onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'">
+        Atmosferi Keşfet →
+      </button>
+    </div>
 
     <div class="premium-visual">
       <video autoplay muted loop playsinline preload="auto">
@@ -634,47 +655,24 @@ filter:blur(0);
       </video>
     </div>
 
-    <div class="premium-overlay"></div>
-
-    <div class="premium-copy">
-      <div class="logo">VAERO</div>
-
-      <div class="sub">
-        Kişisel Atmosfer Sistemi
+    <div class="premium-cards">
+      <div class="premium-card">
+        <h3>Dengeli.</h3>
+        <p>Ne eksik ne fazla.</p>
       </div>
 
-      <div class="hero-text">
-        Bu bir koku değil.<br>
-        Bir atmosfer.
+      <div class="premium-card">
+        <h3>Sessiz.</h3>
+        <p>Rahatsız etmez.</p>
       </div>
 
-      <button class="hero-btn"
-      onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'">
-        Atmosferi Keşfet →
-      </button>
+      <div class="premium-card">
+        <h3>Minimal.</h3>
+        <p>Sadece vardır.</p>
+      </div>
     </div>
 
   </div>
-
-  <div class="premium-cards">
-
-    <div class="premium-card">
-      <h3>Dengeli.</h3>
-      <p>Ne eksik ne fazla.</p>
-    </div>
-
-    <div class="premium-card">
-      <h3>Sessiz.</h3>
-      <p>Rahatsız etmez.</p>
-    </div>
-
-    <div class="premium-card">
-      <h3>Minimal.</h3>
-      <p>Sadece vardır.</p>
-    </div>
-
-  </div>
-
 </section>
 
 <section class="split">
