@@ -403,7 +403,7 @@ filter:blur(0);
 }
 
   /* VAERO HERO STABLE V1 */
-.premium-hero{
+ .premium-hero{
   background:#06101b;
   padding:34px 4% 60px;
   color:white;
@@ -437,8 +437,7 @@ filter:blur(0);
   filter:brightness(.9) saturate(1.05);
 }
 
-.premium-hero-inner::after{
-  content:"";
+.premium-overlay{
   position:absolute;
   inset:0;
   z-index:1;
@@ -457,11 +456,9 @@ filter:blur(0);
 }
 
 .premium-copy .logo{
-  font-family:"Oswald",Arial,sans-serif;
   font-size:68px;
   line-height:1;
   letter-spacing:9px;
-  color:white;
   margin:0 0 24px;
 }
 
@@ -494,15 +491,11 @@ filter:blur(0);
 }
 
 .premium-cards{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:4;
+  max-width:1320px;
+  margin:0 auto;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  background:rgba(3,12,21,.78);
-  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(3,12,21,.96);
 }
 
 .premium-card{
@@ -632,22 +625,8 @@ filter:blur(0);
 <body>
 
 <section class="premium-hero">
-  
+
   <div class="premium-hero-inner">
-
-    <div class="premium-copy">
-      <div class="logo">VAERO</div>
-      <div class="sub">Kişisel Atmosfer Sistemi</div>
-
-      <div class="hero-text">
-        Bu bir koku değil.<br>
-        Bir atmosfer.
-      </div>
-
-      <button class="hero-btn" onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'">
-        Atmosferi Keşfet →
-      </button>
-    </div>
 
     <div class="premium-visual">
       <video autoplay muted loop playsinline preload="auto">
@@ -655,24 +634,47 @@ filter:blur(0);
       </video>
     </div>
 
-    <div class="premium-cards">
-      <div class="premium-card">
-        <h3>Dengeli.</h3>
-        <p>Ne eksik ne fazla.</p>
+    <div class="premium-overlay"></div>
+
+    <div class="premium-copy">
+      <div class="logo">VAERO</div>
+
+      <div class="sub">
+        Kişisel Atmosfer Sistemi
       </div>
 
-      <div class="premium-card">
-        <h3>Sessiz.</h3>
-        <p>Rahatsız etmez.</p>
+      <div class="hero-text">
+        Bu bir koku değil.<br>
+        Bir atmosfer.
       </div>
 
-      <div class="premium-card">
-        <h3>Minimal.</h3>
-        <p>Sadece vardır.</p>
-      </div>
+      <button class="hero-btn"
+      onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'">
+        Atmosferi Keşfet →
+      </button>
     </div>
 
   </div>
+
+  <div class="premium-cards">
+
+    <div class="premium-card">
+      <h3>Dengeli.</h3>
+      <p>Ne eksik ne fazla.</p>
+    </div>
+
+    <div class="premium-card">
+      <h3>Sessiz.</h3>
+      <p>Rahatsız etmez.</p>
+    </div>
+
+    <div class="premium-card">
+      <h3>Minimal.</h3>
+      <p>Sadece vardır.</p>
+    </div>
+
+  </div>
+
 </section>
 
 <section class="split">
