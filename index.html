@@ -548,9 +548,15 @@ filter:blur(0);
 @media(max-width:900px){
 
   .premium-hero{
-    padding:64px 6% 0;
-    background:#06101b;
-  }
+  padding:64px 6% 0;
+  background:
+    linear-gradient(
+      135deg,
+      #06101b 0%,
+      #10263a 48%,
+      #06101b 100%
+    );
+}
 
   .premium-hero-inner{
     min-height:auto;
@@ -560,37 +566,10 @@ filter:blur(0);
   }
 
   .premium-visual{
-    position:absolute;
-    inset:0 0 auto 0;
-    height:620px;
-    z-index:0;
-    overflow:hidden;
-  }
-
-  .premium-visual video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  opacity:.48;
+    display:none;
 }
 
-  .premium-hero-inner::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(4,10,18,.12) 0%,
-      rgba(4,10,18,.28) 45%,
-      rgba(4,10,18,.38) 100%
-    );
-
-  pointer-events:none;
-}
+  
   .premium-copy{
   position:relative;
   z-index:3;
