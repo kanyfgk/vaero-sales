@@ -829,7 +829,7 @@ function getDeviceType(){
   if(w <= 1024) return "tablet";
   return "desktop";
 }
-
+ 
 function openWhatsApp(){
   trackEvent("whatsapp_click",{source:"floating_whatsapp",page:"home"});
   const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak istiyorum");
