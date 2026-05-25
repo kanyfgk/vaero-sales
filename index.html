@@ -408,8 +408,13 @@ filter:blur(0);
   /* CLEAN VAERO HERO */
 
 .premium-hero{
-  background:#06101b;
-  padding:34px 4% 60px;
+  background:linear-gradient(
+    180deg,
+    #06101b 0%,
+    #06101b 68%,
+    #f3efe7 100%
+  );
+  padding:34px 4% 0;
   color:white;
   position:relative;
   overflow:hidden;
@@ -513,10 +518,13 @@ filter:blur(0);
   grid-template-columns:repeat(3,1fr);
   gap:28px;
 
-  background:#f3efe7;
-  padding:110px 8%;
-}
+  max-width:1320px;
+  margin:-70px auto 0;
 
+  padding:0 4% 96px;
+
+  background:transparent;
+}
 .premium-card{
   min-height:190px;
   padding:26px;
@@ -528,6 +536,8 @@ filter:blur(0);
 
   position:relative;
   z-index:2;
+
+  backdrop-filter:blur(10px);
 
   box-shadow:0 10px 30px rgba(0,0,0,.10);
 }
