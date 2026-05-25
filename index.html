@@ -640,32 +640,6 @@ filter:blur(0);
       );
   }
 
-  .screen-glow{
-  position:fixed;
-  left:0;
-  right:0;
-  height:105px;
-  z-index:9999;
-  pointer-events:none;
-  opacity:0;
-  filter:blur(12px);
-  transition:opacity .45s ease;
-}
-
-.screen-glow.top{
-  top:0;
-  background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0));
-}
-
-.screen-glow.bottom{
-  bottom:0;
-  background:linear-gradient(0deg,rgba(255,255,255,.28),rgba(255,255,255,0));
-}
-
-body.scroll-down .screen-glow.top{opacity:.55;}
-body.scroll-up .screen-glow.bottom{opacity:.45;}
-}
-
   .premium-hero-inner{
   min-height:auto;
   border-radius:0;
@@ -789,8 +763,6 @@ body.scroll-up .screen-glow.bottom{opacity:.45;}
 </head>
 
 <body>
-  <div class="screen-glow top"></div>
-<div class="screen-glow bottom"></div>
 
 <section class="premium-hero">
   
@@ -1037,33 +1009,6 @@ document.querySelectorAll("video").forEach(v=>{
   v.muted = true;
   v.playsInline = true;
   v.play().catch(()=>{});
-});
-</script>
-  <script>
-let lastScrollY = window.scrollY;
-
-window.addEventListener("scroll", function(){
-  if(window.innerWidth > 900) return;
-
-  const currentScrollY = window.scrollY;
-  const hero = document.querySelector(".premium-hero");
-  const heroBottom = hero.offsetTop + hero.offsetHeight;
-
-  if(currentScrollY > heroBottom){
-    document.body.classList.remove("scroll-down");
-    document.body.classList.remove("scroll-up");
-    return;
-  }
-
-  if(currentScrollY > lastScrollY){
-    document.body.classList.add("scroll-down");
-    document.body.classList.remove("scroll-up");
-  }else{
-    document.body.classList.add("scroll-up");
-    document.body.classList.remove("scroll-down");
-  }
-
-  lastScrollY = currentScrollY;
 });
 </script>
 </body>
