@@ -640,32 +640,45 @@ filter:blur(0);
       );
   }
 
-  .premium-hero::before,
-  .premium-hero::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    height:90px;
-    z-index:2;
-    pointer-events:none;
-    opacity:0;
-    transition:opacity .45s ease;
-    filter:blur(10px);
-  }
+  body::before,
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  right:0;
+  height:105px;
+  z-index:9999;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .45s ease;
+  filter:blur(12px);
+}
 
-  .premium-hero::before{
-    top:0;
-    background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0));
-  }
+body::before{
+  top:0;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.34),
+    rgba(255,255,255,0)
+  );
+}
 
-  .premium-hero::after{
-    bottom:0;
-    background:linear-gradient(0deg,rgba(255,255,255,.24),rgba(255,255,255,0));
-  }
+body::after{
+  bottom:0;
+  background:linear-gradient(
+    0deg,
+    rgba(255,255,255,.28),
+    rgba(255,255,255,0)
+  );
+}
 
-  body.scroll-down .premium-hero::before{opacity:.55;}
-  body.scroll-up .premium-hero::after{opacity:.45;}
+body.scroll-down::before{
+  opacity:.55;
+}
+
+body.scroll-up::after{
+  opacity:.45;
+}
 
   .premium-hero-inner{
   min-height:auto;
@@ -1045,6 +1058,14 @@ window.addEventListener("scroll", function(){
   if(window.innerWidth > 900) return;
 
   const currentScrollY = window.scrollY;
+  const hero = document.querySelector(".premium-hero");
+  const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+  if(currentScrollY > heroBottom){
+    document.body.classList.remove("scroll-down");
+    document.body.classList.remove("scroll-up");
+    return;
+  }
 
   if(currentScrollY > lastScrollY){
     document.body.classList.add("scroll-down");
