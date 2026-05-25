@@ -640,9 +640,7 @@ filter:blur(0);
       );
   }
 
-  body::before,
-body::after{
-  content:"";
+  .screen-glow{
   position:fixed;
   left:0;
   right:0;
@@ -650,34 +648,22 @@ body::after{
   z-index:9999;
   pointer-events:none;
   opacity:0;
-  transition:opacity .45s ease;
   filter:blur(12px);
+  transition:opacity .45s ease;
 }
 
-body::before{
+.screen-glow.top{
   top:0;
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,.34),
-    rgba(255,255,255,0)
-  );
+  background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0));
 }
 
-body::after{
+.screen-glow.bottom{
   bottom:0;
-  background:linear-gradient(
-    0deg,
-    rgba(255,255,255,.28),
-    rgba(255,255,255,0)
-  );
+  background:linear-gradient(0deg,rgba(255,255,255,.28),rgba(255,255,255,0));
 }
 
-body.scroll-down::before{
-  opacity:.55;
-}
-
-body.scroll-up::after{
-  opacity:.45;
+body.scroll-down .screen-glow.top{opacity:.55;}
+body.scroll-up .screen-glow.bottom{opacity:.45;}
 }
 
   .premium-hero-inner{
@@ -803,6 +789,8 @@ body.scroll-up::after{
 </head>
 
 <body>
+  <div class="screen-glow top"></div>
+<div class="screen-glow bottom"></div>
 
 <section class="premium-hero">
   
