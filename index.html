@@ -622,21 +622,50 @@ filter:blur(0);
 @media(max-width:900px){
 
   .premium-hero{
-  padding:64px 6% 72px;
-  background:
-    radial-gradient(
-      ellipse at 88% 22%,
-      rgba(120,165,220,.30) 0%,
-rgba(95,135,170,.14) 26%,
-rgba(6,16,27,0) 56%
-    ),
-    linear-gradient(
-      135deg,
-      #06101b 0%,
-      #10263a 52%,
-      #06101b 100%
-    );
-}
+    padding:64px 6% 72px;
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(
+        ellipse at 88% 22%,
+        rgba(120,165,220,.30) 0%,
+        rgba(95,135,170,.14) 26%,
+        rgba(6,16,27,0) 56%
+      ),
+      linear-gradient(
+        135deg,
+        #06101b 0%,
+        #10263a 52%,
+        #06101b 100%
+      );
+  }
+
+  .premium-hero::before,
+  .premium-hero::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    height:90px;
+    z-index:2;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .45s ease;
+    filter:blur(10px);
+  }
+
+  .premium-hero::before{
+    top:0;
+    background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,0));
+  }
+
+  .premium-hero::after{
+    bottom:0;
+    background:linear-gradient(0deg,rgba(255,255,255,.24),rgba(255,255,255,0));
+  }
+
+  body.scroll-down .premium-hero::before{opacity:.55;}
+  body.scroll-up .premium-hero::after{opacity:.45;}
 
   .premium-hero-inner{
   min-height:auto;
@@ -653,7 +682,7 @@ rgba(6,16,27,0) 56%
   
   .premium-copy{
   position:relative;
-  z-index:3;
+  z-index:5;
 
   left:auto;
   top:auto;
@@ -1007,6 +1036,25 @@ document.querySelectorAll("video").forEach(v=>{
   v.muted = true;
   v.playsInline = true;
   v.play().catch(()=>{});
+});
+</script>
+  <script>
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", function(){
+  if(window.innerWidth > 900) return;
+
+  const currentScrollY = window.scrollY;
+
+  if(currentScrollY > lastScrollY){
+    document.body.classList.add("scroll-down");
+    document.body.classList.remove("scroll-up");
+  }else{
+    document.body.classList.add("scroll-up");
+    document.body.classList.remove("scroll-down");
+  }
+
+  lastScrollY = currentScrollY;
 });
 </script>
 </body>
