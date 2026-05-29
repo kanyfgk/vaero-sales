@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAERO | Gönderi Takip</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+}
+
+.wrap{
+  width:100%;
+  max-width:520px;
+  text-align:center;
+}
+
+.logo{
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:8px;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+
+p{
+  color:#cbd5e1;
+  font-size:16px;
+  line-height:1.6;
+  margin-bottom:30px;
+}
+
+.track-box{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  padding:28px;
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+  backdrop-filter:blur(12px);
+}
+
+label{
+  display:block;
+  text-align:left;
+  font-size:13px;
+  color:#d8dee8;
+  margin:0 0 8px 4px;
+}
+
+input,select{
+  width:100%;
+  height:54px;
+  border:0;
+  border-radius:14px;
+  padding:0 16px;
+  font-size:15px;
+  margin-bottom:16px;
+  outline:none;
+}
+
+button{
+  width:100%;
+  height:56px;
+  border:0;
+  border-radius:14px;
+  background:#e6d7b0;
+  color:#101a27;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.note{
+  margin-top:26px;
+  color:#cbd5e1;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.error{
+  display:none;
+  margin-top:14px;
+  color:#ffd2d2;
+  font-size:13px;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(7,17,29,.88);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:999;
+}
+
+.spinner{
+  width:36px;
+  height:36px;
+  border:4px solid rgba(255,255,255,.25);
+  border-top-color:#e6d7b0;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin-bottom:16px;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){
+  body{padding:22px}
+  .logo{font-size:34px}
+  h1{font-size:36px}
+  .track-box{padding:22px}
+}
+  button{
+  transition:.2s ease;
+}
+
+button:hover{
+  transform:scale(1.02);
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  <div class="logo">VAERO</div>
+
+  <h1>Track your atmosphere.</h1>
+
+  <p>
+    Follow your VAERO delivery in a simple and clear way.
+  </p>
+
+  <div class="track-box">
+    <label for="trackingCode">Takip numarası</label>
+    <input id="trackingCode" type="text" placeholder="Takip numarası girin">
+
+    <label for="carrierSelect">Kargo şirketi</label>
+    <select id="carrierSelect">
+      <option value="">Seçiniz</option>
+      <option value="boxnow">BOX NOW</option>
+      <option value="dhl">DHL</option>
+      <option value="fedex">FedEx</option>
+      <option value="ups">UPS</option>
+      <option value="aramex">Aramex</option>
+      <option value="yunexpress">YunExpress</option>
+      <option value="china-post">China Post</option>
+      <option value="cainiao">Cainiao</option>
+      <option value="yanwen">Yanwen</option>
+      <option value="4px">4PX</option>
+      <option value="dpd">DPD</option>
+      <option value="gls">GLS</option>
+      <option value="postnl">PostNL</option>
+      <option value="royal-mail">Royal Mail</option>
+      <option value="ptt">PTT Kargo</option>
+      <option value="other">Diğer</option>
+    </select>
+
+    <button id="trackBtn" type="button">Track</button>
+
+    <div id="errorMsg" class="error">
+      Lütfen takip numarası girin ve kargo şirketi seçin.
+    </div>
+  </div>
+
+  <div class="note">
+    Every VAERO shipment is prepared with care.<br>
+    Tracking updates may take time depending on the carrier.
+  </div>
+</div>
+
+<div id="overlay" class="overlay">
+  <div class="spinner"></div>
+  <div>Gönderi bilgisine yönlendiriliyorsunuz...</div>
+</div>
+
+<script>
+  window.onload = () => {
+  document.getElementById("trackingCode").focus();
+};
+  const lang = navigator.language.slice(0,2);
+
+const texts = {
+  tr: {
+    title: "Atmosferini takip et.",
+    subtitle: "VAERO gönderini sade ve net bir şekilde takip et.",
+    code: "Takip numarası",
+    carrier: "Kargo şirketi",
+    button: "Takip Et",
+    note: "Her VAERO gönderisi özenle hazırlanır. Takip güncellemeleri kargo şirketine göre zaman alabilir."
+  },
+  en: {
+    title: "Track your atmosphere.",
+    subtitle: "Follow your VAERO delivery in a simple and clear way.",
+    code: "Tracking number",
+    carrier: "Carrier",
+    button: "Track",
+    note: "Every VAERO shipment is prepared with care. Tracking updates may take time depending on the carrier."
+  },
+  fa: {
+  title: "جریان خود را دنبال کنید.",
+  subtitle: "وضعیت ارسال VAERO را به‌صورت ساده و شفاف مشاهده کنید.",
+  code: "کد رهگیری",
+  carrier: "شرکت حمل‌ونقل",
+  button: "رهگیری",
+  note: "هر ارسال VAERO با دقت و توجه آماده می‌شود. به‌روزرسانی‌ها ممکن است بسته به شرکت حمل‌ونقل زمان ببرد."
+},
+ru: {
+  title: "Контроль в пути.",
+  subtitle: "Следите за доставкой VAERO спокойно и без лишнего шума.",
+  code: "Номер отслеживания",
+  carrier: "Служба доставки",
+  button: "Отследить",
+  note: "Каждая отправка VAERO подготавливается с вниманием. Обновления могут занимать время в зависимости от службы доставки."
+}
+};
+
+const t = texts[lang] || texts.en;
+  if(lang === "fa"){
+  document.body.dir = "rtl";
+}
+const SUPABASE_URL = "https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1";
+const SUPABASE_KEY = "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN";
+
+const trackingInput = document.getElementById("trackingCode");
+const carrierSelect = document.getElementById("carrierSelect");
+const trackBtn = document.getElementById("trackBtn");
+const errorMsg = document.getElementById("errorMsg");
+const overlay = document.getElementById("overlay");
+
+function sendEvent(eventName, meta = {}) {
+  fetch(SUPABASE_URL + "/events", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY
+    },
+    body: JSON.stringify({
+      event_name: eventName,
+      page: window.location.pathname,
+      meta: meta
+    }),
+    keepalive: true
+  }).catch(function(){});
+}
+
+function buildTrackingUrl(carrier, code) {
+  const n = encodeURIComponent(code);
+
+  if (carrier === "dhl") return "https://www.dhl.com/tr-en/home/tracking/tracking-express.html?submit=1&tracking-id=" + n;
+  if (carrier === "fedex") return "https://www.fedex.com/fedextrack/?trknbr=" + n;
+  if (carrier === "ups") return "https://www.ups.com/track?tracknum=" + n;
+  if (carrier === "aramex") return "https://www.aramex.com/track/results?ShipmentNumber=" + n;
+
+  return "https://t.17track.net/en#nums=" + n;
+}
+
+function goToTracking() {
+  const code = trackingInput.value.trim();
+  const carrier = carrierSelect.value;
+
+  if (!code || !carrier) {
+    errorMsg.style.display = "block";
+    return;
+  }
+
+  errorMsg.style.display = "none";
+  overlay.style.display = "flex";
+
+  sendEvent("tracking_submit", {
+    code: code,
+    carrier: carrier
+  });
+
+  const targetUrl = buildTrackingUrl(carrier, code);
+
+  setTimeout(function(){
+    window.location.href = targetUrl;
+  }, 600);
+}
+
+sendEvent("page_view", {
+  referrer: document.referrer,
+  device: navigator.userAgent
+});
+
+let inputStarted = false;
+
+trackingInput.addEventListener("focus", function(){
+  sendEvent("input_focus");
+});
+
+trackingInput.addEventListener("input", function(){
+  if (!inputStarted) {
+    sendEvent("input_started");
+    inputStarted = true;
+  }
+});
+
+carrierSelect.addEventListener("change", function(){
+  sendEvent("carrier_selected", {
+    carrier: carrierSelect.value
+  });
+});
+
+trackBtn.addEventListener("click", goToTracking);
+
+trackingInput.addEventListener("keydown", function(e){
+  if (e.key === "Enter") goToTracking();
+});
+
+setTimeout(function(){
+  sendEvent("time_30s");
+}, 30000);
+  setTimeout(() => {
+
+  // Tüm h1'leri bul ve değiştir
+  document.querySelectorAll("h1").forEach(el => {
+    el.innerText = t.title;
+  });
+
+  // Tüm p'leri bul ve ilkini değiştir
+  const p = document.querySelector("p");
+  if (p) p.innerText = t.subtitle;
+
+  // label'ları değiştir
+  const labels = document.querySelectorAll("label");
+  if (labels[0]) labels[0].innerText = t.code;
+  if (labels[1]) labels[1].innerText = t.carrier;
+
+  // buton
+  const btn = document.getElementById("trackBtn");
+if (btn) btn.innerText = t.button;
+
+  // alt yazı
+  const note = document.querySelector(".note");
+  if (note) note.innerText = t.note;
+
+}, 100);
+  document.getElementById("trackBtn").onclick = function(){
+  goToTracking();
+};
+  function checkForm(){
+  const code = trackingInput.value.trim();
+  const carrier = carrierSelect.value;
+
+  trackBtn.disabled = !(code && carrier);
+}
+
+trackingInput.addEventListener("input", checkForm);
+carrierSelect.addEventListener("change", checkForm);
+
+checkForm();
+window.onload = function(){
+  document.getElementById("trackingCode").focus();
+};
+</script>
+
+</body>
+</html>
