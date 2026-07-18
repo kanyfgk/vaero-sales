@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,7 @@ body{
   filter:blur(6px);
   transition:all .6s ease;
 }
+  
   body.loaded{
 opacity:1;
 filter:blur(0);
@@ -246,19 +247,6 @@ filter:blur(0);
   text-decoration:none;
 }
 
-.floating-wa{
-  position:fixed;
-  right:16px;
-  bottom:80px;
-  background:#253044;
-  color:white;
-  padding:16px 28px;
-  border-radius:999px;
-  z-index:99;
-  font-size:14px;
-
-  transition: opacity 0.4s ease;
-}
 
 .footer{
   padding:42px 8%;
@@ -392,13 +380,6 @@ filter:blur(0);
     line-height:24px;
     font-size:14px;
     padding:0 12px;
-  }
-
-  .floating-wa{
-    right:16px;
-    bottom:18px;
-    padding:13px 22px;
-    font-size:13px;
   }
 
   .footer{
@@ -758,6 +739,169 @@ filter:blur(0);
   .premium-hero + .split{
   background:#f3efe7;
 }
+
+  .language-switcher{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:999;
+}
+
+.language-current{
+  min-width:52px;
+  height:42px;
+  padding:0 14px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  background:rgba(9,20,33,.84);
+  color:#fff;
+  font-size:13px;
+  letter-spacing:1px;
+  cursor:pointer;
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,.20);
+}
+
+.language-menu{
+  position:absolute;
+  top:50px;
+  right:0;
+  width:150px;
+  padding:8px;
+  border-radius:14px;
+  background:rgba(9,20,33,.96);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 18px 40px rgba(0,0,0,.30);
+  backdrop-filter:blur(16px);
+  display:none;
+}
+
+.language-menu.open{
+  display:block;
+}
+
+.language-menu button{
+  display:block;
+  width:100%;
+  padding:11px 12px;
+  border:0;
+  border-radius:9px;
+  background:transparent;
+  color:#e8edf3;
+  text-align:left;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.language-menu button:hover{
+  background:rgba(255,255,255,.08);
+}
+
+.delivery-support{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  z-index:99;
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding:7px 7px 7px 20px;
+  border-radius:999px;
+
+  background:rgba(29,48,70,.96);
+  color:white;
+
+  box-shadow:0 12px 34px rgba(0,0,0,.22);
+  backdrop-filter:blur(14px);
+
+  transition:opacity .4s ease;
+}
+
+.delivery-support-text{
+  color:rgba(255,255,255,.78);
+  font-size:13px;
+  letter-spacing:.5px;
+  white-space:nowrap;
+}
+
+.delivery-support-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:48px;
+  padding:0 22px;
+
+  border:0;
+  border-radius:999px;
+
+  background:rgba(48,61,86,.96);
+  color:white;
+
+  font-size:14px;
+  font-weight:600;
+  text-decoration:underline;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+html[dir="rtl"] .language-switcher{
+  right:auto;
+  left:18px;
+}
+
+html[dir="rtl"] .language-menu{
+  right:auto;
+  left:0;
+}
+
+html[dir="rtl"] .language-menu button{
+  text-align:right;
+}
+
+html[dir="rtl"] .delivery-support{
+  right:auto;
+  left:16px;
+}
+
+@media(max-width:600px){
+  .language-switcher{
+    top:12px;
+    right:12px;
+  }
+
+  html[dir="rtl"] .language-switcher{
+    right:auto;
+    left:12px;
+  }
+
+  .delivery-support{
+    right:12px;
+    bottom:14px;
+    max-width:calc(100% - 24px);
+    gap:10px;
+    padding-left:15px;
+  }
+
+  html[dir="rtl"] .delivery-support{
+    right:auto;
+    left:12px;
+    padding-left:7px;
+    padding-right:15px;
+  }
+
+  .delivery-support-text{
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .delivery-support-button{
+    min-height:46px;
+    padding:0 18px;
+  }
+}
   
 </style>
   <!-- Meta Pixel Code -->
@@ -782,24 +926,44 @@ src="https://www.facebook.com/tr?id=2424303334738849&ev=PageView&noscript=1"
 
 <body>
 
+  <div class="language-switcher">
+  <button type="button" class="language-current" id="languageCurrent">
+    EN
+  </button>
+
+  <div class="language-menu" id="languageMenu">
+    <button type="button" data-lang-option="en">English</button>
+    <button type="button" data-lang-option="el">Ελληνικά</button>
+    <button type="button" data-lang-option="tr">Türkçe</button>
+    <button type="button" data-lang-option="ru">Русский</button>
+    <button type="button" data-lang-option="fa">فارسی</button>
+  </div>
+</div>
+
 <section class="premium-hero">
   
   <div class="premium-hero-inner">
 
     <div class="premium-copy">
-      <div class="logo">VAERO</div>
-      <div class="sub">Kişisel Atmosfer Sistemi</div>
+  <div class="logo">VAERO</div>
 
-      <div class="hero-text">
-        Bu bir koku değil.<br>
-        Bir atmosfer.
-      </div>
+  <div class="sub" data-i18n="systemName">
+    Personal Atmosphere System
+  </div>
 
-      <button class="hero-btn" onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'">
-        Atmosferi Keşfet →
-      </button>
-    </div>
+  <div class="hero-text">
+    <span data-i18n="heroLine1">This is not a fragrance.</span><br>
+    <span data-i18n="heroLine2">It is an atmosphere.</span>
+  </div>
 
+  <button
+    class="hero-btn"
+    data-i18n="exploreAtmosphere"
+    onclick="trackEvent('home_hero_sales_click',{source:'home_hero',target:'sales'}); window.location.href='sales.html?source=home_hero'"
+  >
+    Explore the atmosphere →
+  </button>
+</div>
     <div class="premium-visual">
       <video autoplay muted loop playsinline preload="auto">
         <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-hero-video.mp4.mp4" type="video/mp4">
@@ -807,105 +971,137 @@ src="https://www.facebook.com/tr?id=2424303334738849&ev=PageView&noscript=1"
     </div>
     </div>
     <div class="premium-cards">
-      <div class="premium-card">
-        <h3>Dengeli.</h3>
-        <p>Ne eksik ne fazla.</p>
-      </div>
+  <div class="premium-card">
+    <h3 data-i18n="balancedTitle">Balanced.</h3>
+    <p data-i18n="balancedText">Nothing missing. Nothing excessive.</p>
+  </div>
 
-      <div class="premium-card">
-        <h3>Sessiz.</h3>
-        <p>Rahatsız etmez.</p>
-      </div>
+  <div class="premium-card">
+    <h3 data-i18n="quietTitle">Quiet.</h3>
+    <p data-i18n="quietText">It does not disturb.</p>
+  </div>
 
-      <div class="premium-card">
-        <h3>Minimal.</h3>
-        <p>Sadece vardır.</p>
-      </div>
-    </div>
+  <div class="premium-card">
+    <h3 data-i18n="minimalTitle">Minimal.</h3>
+    <p data-i18n="minimalText">It simply exists.</p>
+  </div>
+</div>
 
 </section>
 
 <section class="split">
   <div>
-    <h2 class="split-title">Bu bir koku meselesi değil.</h2>
+    <h2 class="split-title" data-i18n="experienceTitle">
+      This is not about fragrance.
+    </h2>
 
-    <p class="split-top">
-      Sürüş sırasında ne hissettiğinle ilgili.
+    <p class="split-top" data-i18n="experienceTop">
+      It is about how you feel while driving.
     </p>
 
     <p class="split-bottom">
-      Araban, gününün devam ettiği bir alan.<br>
-      VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.
+      <span data-i18n="experienceBottom1">
+        Your car is a space where your day continues.
+      </span><br>
+
+      <span data-i18n="experienceBottom2">
+        VAERO turns it into an atmosphere that stays calm with you.
+      </span>
     </p>
   </div>
 
   <div class="video-box">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-starlight-ambience.mp4.mp4" type="video/mp4">
-  </video>
-</div>
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-starlight-ambience.mp4.mp4" type="video/mp4">
+    </video>
+  </div>
 </section>
 <section class="split white">
-  
-<div class="video-box">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-white-tea.mp4" type="video/mp4">
-  </video>
-</div>
+  <div class="video-box">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-white-tea.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <div>
     <h2 class="split-title">White Tea</h2>
 
-    <p class="split-top">
-      Ortamı fark ettirmeden değiştirir.
+    <p class="split-top" data-i18n="whiteTeaTop">
+      It changes the atmosphere without demanding attention.
     </p>
 
     <p class="split-bottom">
-      Ferah bir başlangıç.<br>
-      Yumuşak bir devam.<br>
-      Sakin bir iz.
+      <span data-i18n="whiteTeaLine1">A fresh beginning.</span><br>
+      <span data-i18n="whiteTeaLine2">A soft continuation.</span><br>
+      <span data-i18n="whiteTeaLine3">A calm trace.</span>
     </p>
   </div>
 </section>
 
 <section class="split white">
   <div class="video-box">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-morning-atmosphere-final.mp4.mp4" type="video/mp4"> 
-  </video>
-</div>
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://raw.githubusercontent.com/kanyfgk/vaero-sales/main/vaero-morning-atmosphere-final.mp4.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <div>
-    <h2 class="split-title">Aslında fark ettiğin şey bu değil.</h2>
+    <h2 class="split-title" data-i18n="feelingTitle">
+      This is not actually what you notice.
+    </h2>
 
-    <p class="split-top">
-      Gürültü azaldı.
+    <p class="split-top" data-i18n="feelingTop">
+      The noise feels lower.
     </p>
 
     <p class="split-bottom">
-      Kafa daha net.<br>
-      Yol daha akışta.<br>
-      Sen daha rahatsın.
+      <span data-i18n="feelingLine1">Your mind feels clearer.</span><br>
+      <span data-i18n="feelingLine2">The road flows more naturally.</span><br>
+      <span data-i18n="feelingLine3">You feel more at ease.</span>
     </p>
   </div>
 </section>
 
 <section class="final">
-  <h2>Atmosferin devamını gör.</h2>
+  <h2 data-i18n="finalTitle">See the atmosphere continue.</h2>
 
-  <p>
-    VAERO’nun arkasındaki sistemi ve deneyim paketini görmek için satış sayfasına geç.
+  <p data-i18n="finalText">
+    Discover the system and experience package behind VAERO.
   </p>
 
-  <a class="cta" href="sales.html?source=home_bottom" onclick="trackEvent('home_bottom_sales_click',{source:'home_bottom',target:'sales'})">
-  Satış Sayfasına Geç →
-</a>
+  <a
+    class="cta"
+    href="sales.html?source=home_bottom"
+    onclick="trackEvent('home_bottom_sales_click',{source:'home_bottom',target:'sales'})"
+    data-i18n="salesPage"
+  >
+    Go to the sales page →
+  </a>
 
-  <a class="track-link" href="/track/" target="_blank" onclick="trackEvent('home_track_click',{source:'home_bottom',target:'track'})">
-  Sipariş verdiniz mi? Gönderi durumunu kontrol edin →
-</a>
+  <a
+    class="track-link"
+    href="/track/"
+    target="_blank"
+    onclick="trackEvent('home_track_click',{source:'home_bottom',target:'track'})"
+    data-i18n="trackOrder"
+  >
+    Already ordered? Check your delivery status →
+  </a>
 </section>
-<a class="floating-wa" href="#" onclick="openWhatsApp(); return false;">Whatsapp</a>
+<div class="delivery-support">
+  <span class="delivery-support-text" data-i18n="deliveryArea">
+    Delivery across Cyprus
+  </span>
+
+  <a
+    class="delivery-support-button"
+    href="#"
+    onclick="openWhatsApp(); return false;"
+    data-i18n="askStatus"
+  >
+    Ask us
+  </a>
+</div>
 
 <div class="footer">
   <a href="https://vaero.io/policy" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">
@@ -925,9 +1121,20 @@ function getDeviceType(){
 }
  
 function openWhatsApp(){
-  trackEvent("whatsapp_click",{source:"floating_whatsapp",page:"home"});
-  const msg=encodeURIComponent("Merhaba, VAERO hakkında bilgi almak istiyorum");
-  window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
+  const translation = translations[currentLanguage] || translations.en;
+  const message = encodeURIComponent(translation.whatsappMessage);
+
+  trackEvent("whatsapp_click", {
+    source: "delivery_support",
+    page: "home",
+    language: currentLanguage
+  });
+
+  window.location.href =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    message;
 }
 
 function trackEvent(eventName, meta = {}) {
@@ -958,76 +1165,324 @@ window.addEventListener("load", function(){
   document.body.classList.add("loaded");
 });
 </script>
-  <script>
-const lang = navigator.language.slice(0,2);
-
-const texts = {
-  tr: {
-    heroTitle: "Bir ürün değil. Kontrollü bir atmosfer.",
-    heroSub: "VAERO, araç içindeki karmaşayı azaltır. Daha sade ve kontrollü bir deneyim sunar.",
-    cta: "Detayları gör"
-  },
+  
+<script>
+const translations = {
   en: {
-    heroTitle: "Not a product. An atmosphere system.",
-    heroSub: "VAERO reduces complexity inside your car. A cleaner, more controlled experience.",
-    cta: "Explore"
+    pageTitle: "VAERO | Personal Atmosphere System",
+    systemName: "Personal Atmosphere System",
+
+    heroLine1: "This is not a fragrance.",
+    heroLine2: "It is an atmosphere.",
+    exploreAtmosphere: "Explore the atmosphere →",
+
+    balancedTitle: "Balanced.",
+    balancedText: "Nothing missing. Nothing excessive.",
+    quietTitle: "Quiet.",
+    quietText: "It does not disturb.",
+    minimalTitle: "Minimal.",
+    minimalText: "It simply exists.",
+
+    experienceTitle: "This is not about fragrance.",
+    experienceTop: "It is about how you feel while driving.",
+    experienceBottom1: "Your car is a space where your day continues.",
+    experienceBottom2: "VAERO turns it into an atmosphere that stays calm with you.",
+
+    whiteTeaTop: "It changes the atmosphere without demanding attention.",
+    whiteTeaLine1: "A fresh beginning.",
+    whiteTeaLine2: "A soft continuation.",
+    whiteTeaLine3: "A calm trace.",
+
+    feelingTitle: "This is not actually what you notice.",
+    feelingTop: "The noise feels lower.",
+    feelingLine1: "Your mind feels clearer.",
+    feelingLine2: "The road flows more naturally.",
+    feelingLine3: "You feel more at ease.",
+
+    finalTitle: "See the atmosphere continue.",
+    finalText: "Discover the system and experience package behind VAERO.",
+    salesPage: "Go to the sales page →",
+    trackOrder: "Already ordered? Check your delivery status →",
+
+    deliveryArea: "Delivery across Cyprus",
+    askStatus: "Ask us",
+
+    whatsappMessage: "Hello, I would like to learn more about VAERO."
   },
+
+  el: {
+    pageTitle: "VAERO | Σύστημα Προσωπικής Ατμόσφαιρας",
+    systemName: "Σύστημα Προσωπικής Ατμόσφαιρας",
+
+    heroLine1: "Δεν είναι απλώς ένα άρωμα.",
+    heroLine2: "Είναι μια ατμόσφαιρα.",
+    exploreAtmosphere: "Ανακαλύψτε την ατμόσφαιρα →",
+
+    balancedTitle: "Ισορροπημένο.",
+    balancedText: "Τίποτα λιγότερο. Τίποτα περιττό.",
+    quietTitle: "Αθόρυβο.",
+    quietText: "Δεν ενοχλεί.",
+    minimalTitle: "Μινιμαλιστικό.",
+    minimalText: "Απλώς υπάρχει.",
+
+    experienceTitle: "Δεν είναι θέμα αρώματος.",
+    experienceTop: "Είναι θέμα του πώς αισθάνεστε όταν οδηγείτε.",
+    experienceBottom1: "Το αυτοκίνητό σας είναι ένας χώρος όπου συνεχίζεται η ημέρα σας.",
+    experienceBottom2: "Το VAERO το μετατρέπει σε μια ατμόσφαιρα που παραμένει ήρεμη μαζί σας.",
+
+    whiteTeaTop: "Αλλάζει την ατμόσφαιρα χωρίς να απαιτεί την προσοχή σας.",
+    whiteTeaLine1: "Μια δροσερή αρχή.",
+    whiteTeaLine2: "Μια απαλή συνέχεια.",
+    whiteTeaLine3: "Ένα ήρεμο αποτύπωμα.",
+
+    feelingTitle: "Στην πραγματικότητα, δεν είναι αυτό που παρατηρείτε.",
+    feelingTop: "Ο θόρυβος μοιάζει να μειώνεται.",
+    feelingLine1: "Το μυαλό σας γίνεται πιο καθαρό.",
+    feelingLine2: "Ο δρόμος κυλά πιο φυσικά.",
+    feelingLine3: "Αισθάνεστε πιο άνετα.",
+
+    finalTitle: "Δείτε την ατμόσφαιρα να συνεχίζεται.",
+    finalText: "Ανακαλύψτε το σύστημα και την εμπειρία πίσω από το VAERO.",
+    salesPage: "Μετάβαση στη σελίδα πωλήσεων →",
+    trackOrder: "Έχετε ήδη παραγγείλει; Ελέγξτε την κατάσταση αποστολής →",
+
+    deliveryArea: "Παράδοση σε όλη την Κύπρο",
+    askStatus: "Ρωτήστε μας",
+
+    whatsappMessage: "Γεια σας, θα ήθελα περισσότερες πληροφορίες για το VAERO."
+  },
+
+  tr: {
+    pageTitle: "VAERO | Kişisel Atmosfer Sistemi",
+    systemName: "Kişisel Atmosfer Sistemi",
+
+    heroLine1: "Bu bir koku değil.",
+    heroLine2: "Bir atmosfer.",
+    exploreAtmosphere: "Atmosferi Keşfet →",
+
+    balancedTitle: "Dengeli.",
+    balancedText: "Ne eksik ne fazla.",
+    quietTitle: "Sessiz.",
+    quietText: "Rahatsız etmez.",
+    minimalTitle: "Minimal.",
+    minimalText: "Sadece vardır.",
+
+    experienceTitle: "Bu bir koku meselesi değil.",
+    experienceTop: "Sürüş sırasında ne hissettiğinle ilgili.",
+    experienceBottom1: "Araban, gününün devam ettiği bir alan.",
+    experienceBottom2: "VAERO, onu seninle sakin kalan bir atmosfere dönüştürür.",
+
+    whiteTeaTop: "Ortamı fark ettirmeden değiştirir.",
+    whiteTeaLine1: "Ferah bir başlangıç.",
+    whiteTeaLine2: "Yumuşak bir devam.",
+    whiteTeaLine3: "Sakin bir iz.",
+
+    feelingTitle: "Aslında fark ettiğin şey bu değil.",
+    feelingTop: "Gürültü azaldı.",
+    feelingLine1: "Kafa daha net.",
+    feelingLine2: "Yol daha akışta.",
+    feelingLine3: "Sen daha rahatsın.",
+
+    finalTitle: "Atmosferin devamını gör.",
+    finalText: "VAERO’nun arkasındaki sistemi ve deneyim paketini keşfet.",
+    salesPage: "Satış Sayfasına Geç →",
+    trackOrder: "Sipariş verdiniz mi? Gönderi durumunu kontrol edin →",
+
+    deliveryArea: "Kıbrıs geneli teslimat",
+    askStatus: "Bilgi al",
+
+    whatsappMessage: "Merhaba, VAERO hakkında bilgi almak istiyorum."
+  },
+
   ru: {
-    heroTitle: "Не продукт. Атмосфера.",
-    heroSub: "VAERO упрощает пространство в автомобиле.",
-    cta: "Подробнее"
+    pageTitle: "VAERO | Система персональной атмосферы",
+    systemName: "Система персональной атмосферы",
+
+    heroLine1: "Это не просто аромат.",
+    heroLine2: "Это атмосфера.",
+    exploreAtmosphere: "Открыть атмосферу →",
+
+    balancedTitle: "Сбалансировано.",
+    balancedText: "Ничего лишнего.",
+    quietTitle: "Тихо.",
+    quietText: "Не отвлекает.",
+    minimalTitle: "Минималистично.",
+    minimalText: "Просто существует.",
+
+    experienceTitle: "Дело не только в аромате.",
+    experienceTop: "Дело в том, как вы чувствуете себя за рулём.",
+    experienceBottom1: "Автомобиль — это пространство, в котором продолжается ваш день.",
+    experienceBottom2: "VAERO превращает его в спокойную атмосферу, которая остаётся с вами.",
+
+    whiteTeaTop: "Меняет атмосферу, не привлекая к себе лишнего внимания.",
+    whiteTeaLine1: "Свежее начало.",
+    whiteTeaLine2: "Мягкое продолжение.",
+    whiteTeaLine3: "Спокойный след.",
+
+    feelingTitle: "На самом деле вы замечаете не это.",
+    feelingTop: "Шума становится меньше.",
+    feelingLine1: "Мысли становятся яснее.",
+    feelingLine2: "Дорога ощущается плавнее.",
+    feelingLine3: "Вы чувствуете себя спокойнее.",
+
+    finalTitle: "Узнайте продолжение атмосферы.",
+    finalText: "Откройте для себя систему и опыт, стоящие за VAERO.",
+    salesPage: "Перейти на страницу продаж →",
+    trackOrder: "Уже заказали? Проверьте статус доставки →",
+
+    deliveryArea: "Доставка по всему Кипру",
+    askStatus: "Узнать больше",
+
+    whatsappMessage: "Здравствуйте, я хотел бы узнать больше о VAERO."
   },
+
   fa: {
-    heroTitle: "فقط یک محصول نیست. یک فضاست.",
-    heroSub: "VAERO فضای داخل خودرو را ساده‌تر می‌کند.",
-    cta: "مشاهده"
+    pageTitle: "VAERO | سیستم فضای شخصی",
+    systemName: "سیستم فضای شخصی",
+
+    heroLine1: "این فقط یک رایحه نیست.",
+    heroLine2: "یک فضاست.",
+    exploreAtmosphere: "کشف فضای VAERO ←",
+
+    balancedTitle: "متعادل.",
+    balancedText: "نه کم، نه زیاد.",
+    quietTitle: "آرام.",
+    quietText: "مزاحم شما نمی‌شود.",
+    minimalTitle: "مینیمال.",
+    minimalText: "فقط حضور دارد.",
+
+    experienceTitle: "موضوع فقط رایحه نیست.",
+    experienceTop: "موضوع احساسی است که هنگام رانندگی دارید.",
+    experienceBottom1: "خودروی شما فضایی است که روزتان در آن ادامه پیدا می‌کند.",
+    experienceBottom2: "VAERO آن را به فضایی آرام تبدیل می‌کند که همراه شما می‌ماند.",
+
+    whiteTeaTop: "بدون جلب توجه، فضای داخل خودرو را تغییر می‌دهد.",
+    whiteTeaLine1: "شروعی تازه.",
+    whiteTeaLine2: "ادامه‌ای ملایم.",
+    whiteTeaLine3: "اثری آرام.",
+
+    feelingTitle: "در واقع چیزی که متوجه می‌شوید این نیست.",
+    feelingTop: "سر و صدا کمتر به نظر می‌رسد.",
+    feelingLine1: "ذهن شفاف‌تر می‌شود.",
+    feelingLine2: "مسیر روان‌تر احساس می‌شود.",
+    feelingLine3: "شما آرام‌تر هستید.",
+
+    finalTitle: "ادامه این فضا را ببینید.",
+    finalText: "سیستم و تجربه‌ای را که پشت VAERO قرار دارد کشف کنید.",
+    salesPage: "مشاهده صفحه فروش ←",
+    trackOrder: "قبلاً سفارش داده‌اید؟ وضعیت ارسال را بررسی کنید ←",
+
+    deliveryArea: "ارسال در سراسر قبرس",
+    askStatus: "اطلاعات بیشتر",
+
+    whatsappMessage: "سلام، می‌خواهم اطلاعات بیشتری درباره VAERO دریافت کنم."
   }
 };
 
-const t = texts[lang] || texts.en;
+const supportedLanguages = ["en", "el", "tr", "ru", "fa"];
+const languageCurrent = document.getElementById("languageCurrent");
+const languageMenu = document.getElementById("languageMenu");
 
-// HERO BAŞLIK
-const h1 = document.querySelector(".hero h1");
-if (h1) h1.innerText = t.heroTitle;
+let currentLanguage = "en";
 
-// ALT METİN
-const p = document.querySelector(".hero p");
-if (p) p.innerText = t.heroSub;
+function detectLanguage(){
+  const savedLanguage = localStorage.getItem("vaero_language");
 
-// BUTON
-const btn = document.querySelector(".btn");
-if (btn) btn.innerText = t.cta;
+  if(savedLanguage && supportedLanguages.includes(savedLanguage)){
+    return savedLanguage;
+  }
 
-// FARSÇA RTL
-if(lang === "fa"){
-  document.body.dir = "rtl";
+  const browserLanguages = navigator.languages || [navigator.language];
+
+  for(const browserLanguage of browserLanguages){
+    const shortCode = browserLanguage.toLowerCase().split("-")[0];
+
+    if(supportedLanguages.includes(shortCode)){
+      return shortCode;
+    }
+  }
+
+  return "en";
 }
-    window.addEventListener("scroll", function() {
+
+function applyLanguage(language){
+  const selectedLanguage = supportedLanguages.includes(language)
+    ? language
+    : "en";
+
+  const translation = translations[selectedLanguage];
+
+  currentLanguage = selectedLanguage;
+
+  document.documentElement.lang = selectedLanguage;
+  document.documentElement.dir = selectedLanguage === "fa" ? "rtl" : "ltr";
+  document.title = translation.pageTitle;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+
+    if(translation[key]){
+      element.textContent = translation[key];
+    }
+  });
+
+  languageCurrent.textContent = selectedLanguage.toUpperCase();
+  localStorage.setItem("vaero_language", selectedLanguage);
+
+  trackEvent("language_selected", {
+    language: selectedLanguage,
+    source: "language_switcher"
+  });
+}
+
+languageCurrent.addEventListener("click", function(event){
+  event.stopPropagation();
+  languageMenu.classList.toggle("open");
+});
+
+document.querySelectorAll("[data-lang-option]").forEach(button => {
+  button.addEventListener("click", function(){
+    applyLanguage(this.dataset.langOption);
+    languageMenu.classList.remove("open");
+  });
+});
+
+document.addEventListener("click", function(){
+  languageMenu.classList.remove("open");
+});
+
+applyLanguage(detectLanguage());
+</script>
+
+<script>
+window.addEventListener("scroll", function(){
   const scroll = window.scrollY;
   const height = document.body.scrollHeight - window.innerHeight;
   const ratio = height > 0 ? scroll / height : 0;
 
-  const wa = document.querySelector(".floating-wa");
-  if (!wa) return;
+  const support = document.querySelector(".delivery-support");
+  if(!support) return;
 
-  if (ratio > 0.85) {
-    wa.style.opacity = "0";
-    wa.style.pointerEvents = "none";
-  } else if (ratio > 0.6) {
-    wa.style.opacity = "0.3";
-    wa.style.pointerEvents = "auto";
-  } else {
-    wa.style.opacity = "1";
-    wa.style.pointerEvents = "auto";
+  if(ratio > 0.85){
+    support.style.opacity = "0";
+    support.style.pointerEvents = "none";
+  }else if(ratio > 0.60){
+    support.style.opacity = "0.35";
+    support.style.pointerEvents = "auto";
+  }else{
+    support.style.opacity = "1";
+    support.style.pointerEvents = "auto";
   }
 });
 </script>
-  <script>
-document.querySelectorAll("video").forEach(v=>{
-  v.muted = true;
-  v.playsInline = true;
-  v.play().catch(()=>{});
+
+<script>
+document.querySelectorAll("video").forEach(video => {
+  video.muted = true;
+  video.playsInline = true;
+  video.play().catch(() => {});
 });
 </script>
+
 </body>
 </html>
