@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VAERO | Deneyim Paketi</title>
-
+<title>VAERO | Experience Package</title>
+ 
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
 <style>
@@ -460,13 +460,6 @@ p{
   }
 }
 
-  .package-scene{
-  position:relative;
-  overflow:hidden;
-  background:#050b12;
-  isolation:isolate;
-}
-
 .package-scene{
   position:relative;
   overflow:hidden;
@@ -561,18 +554,24 @@ p{
 <section class="hero">
   <div class="hero-card">
     <div class="logo">VAERO</div>
-    <div class="sub">Deneyim Paketi</div>
+    <div class="sub" data-i18n="systemName">Experience Package</div>
 
-    <h1>Not a product.<br>A controlled atmosphere.</h1>
+<h1>
+  <span data-i18n="heroLine1">Not a product.</span><br>
+  <span data-i18n="heroLine2">A controlled atmosphere.</span>
+</h1>
 
-    <p>
-  VAERO, araç içindeki karmaşayı ortadan kaldırır.
-  Tek bir sistemle daha sade, daha kontrollü bir deneyim sunar.
+<p data-i18n="heroText">
+  VAERO reduces complexity inside your car and creates a cleaner, more controlled experience.
 </p>
 
-    <button class="btn" onclick="document.getElementById('package').scrollIntoView({behavior:'smooth'});">
-  Detayları gör
-</button>
+<button
+  class="btn"
+  data-i18n="heroButton"
+  onclick="document.getElementById('package').scrollIntoView({behavior:'smooth'});"
+>
+  Explore the details
+</button> 
   </div>
 
 <div class="hero-visual">
@@ -584,11 +583,11 @@ p{
 
 <section id="package" class="section split">
   <div>
-    <h2>Paketin içinde ne var?</h2>
-    <p>
-      VAERO cihaz, ilk kurulum paketiyle birlikte gelir.
-      İlk kullanım için ayrıca parça aramana gerek kalmaz.
-    </p>
+    <h2 data-i18n="packageTitle">What’s inside the package?</h2>
+
+<p data-i18n="packageText">
+  VAERO comes with the device and one selected fragrance. No additional parts are needed to begin.
+</p>
   </div>
   <div class="visual package-scene">
   <video autoplay muted loop playsinline preload="auto">
@@ -599,21 +598,27 @@ p{
 
 <section class="section">
   <div class="grid">
-    <div class="card">
-      <h3>Şarj.</h3>
-      <p>Telefonunu sürüş sırasında destekler. Enerji tarafı arkada sessizce çalışır.</p>
-    </div>
-
-    <div class="card">
-      <h3>Yayılım.</h3>
-      <p>Kokuyu tek noktaya sıkıştırmaz. Ortama daha dengeli şekilde dağıtır.</p>
-    </div>
-
-    <div class="card">
-      <h3>Düzen.</h3>
-      <p>Ekstra kalabalık yaratmadan araç içinde tek bir sistem hissi verir.</p>
-    </div>
+  <div class="card">
+    <h3 data-i18n="chargingTitle">Charging.</h3>
+    <p data-i18n="chargingText">
+      Supports your phone while driving. The energy system works quietly in the background.
+    </p>
   </div>
+
+  <div class="card">
+    <h3 data-i18n="diffusionTitle">Diffusion.</h3>
+    <p data-i18n="diffusionText">
+      It distributes the fragrance more evenly throughout the space.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3 data-i18n="orderTitle">Order.</h3>
+    <p data-i18n="orderText">
+      Creates the feeling of one complete system without adding unnecessary clutter.
+    </p>
+  </div>
+</div>
 </section>
 
 <section class="white">
@@ -625,24 +630,21 @@ p{
 </div>
 
     <div class="light-section">
-      <h2>Neden ayrı ayrı değil?</h2>
-      <p>
-        Çünkü araç içinde fazla parça, fazla kablo ve fazla dikkat dağıtıcı unsur istemezsin.
-        VAERO’nun amacı, bunları tek kullanım noktasında sadeleştirmek.
-      </p>
-    </div>
+  <h2 data-i18n="whyTitle">Why not separately?</h2>
+
+  <p data-i18n="whyText">
+    You do not want unnecessary parts, cables or distractions inside your car. VAERO simplifies them into one point of use.
+  </p>
+</div>
   </div>
 </section>
 
 <section class="section split dark-section">
   <div>
-    <h2>Stok yapısı</h2>
-    <p>
-  VAERO sürekli stok mantığıyla çalışmaz.
-  Ürünler belirli aralıklarla sınırlı şekilde gelir.
+    <h2 data-i18n="stockTitle">Stock structure</h2>
 
-  Bu yüzden sipariş öncesinde mevcut durum ve teslim süresi
-  WhatsApp üzerinden netleşir.
+<p data-i18n="stockText">
+  VAERO does not operate with permanent stock. Products arrive in limited batches. Availability and delivery time are confirmed through WhatsApp before ordering.
 </p>
   </div>
 
@@ -653,25 +655,34 @@ p{
 </div>
 </section>
 <section class="final">
-  <h2>Karar vermek zorunda değilsin.</h2>
+  <h2 data-i18n="finalTitle">You do not have to decide now.</h2>
 
-<p>
-Önce mevcut durumu öğren.<br>
-Stok, fiyat ve teslim süresi netleşsin.<br><br>
+  <p data-i18n="finalText">
+    First, check the current availability, price and delivery time. Then continue when you are ready.
+  </p>
 
-Sonra istersen devam edersin.
-</p>
-
-  <a class="btn" href="#" onclick="openWhatsApp('sales_main_cta'); return false;">
-    Durumu öğren
+  <a
+    class="btn"
+    href="#"
+    onclick="openWhatsApp('sales_main_cta'); return false;"
+    data-i18n="finalButton"
+  >
+    Check availability
   </a>
 </section>
 
-  <div class="wa-whisper" id="waWhisper">
-  Kıbrıs geneli teslimat.
+  <div class="wa-whisper" id="waWhisper" data-i18n="deliveryArea">
+  Delivery across Cyprus.
 </div>
-  
-<a class="floating-wa" href="#" onclick="openWhatsApp('floating_button'); return false;">Durum sor</a>
+
+<a
+  class="floating-wa"
+  href="#"
+  onclick="openWhatsApp('floating_button'); return false;"
+  data-i18n="floatingButton"
+>
+  Ask us
+</a>
 
 <div class="footer">
   <a href="https://vaero.io/policy/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">
@@ -681,71 +692,204 @@ Sonra istersen devam edersin.
 </div>
 
 <script>
-  const lang = navigator.language.slice(0,2);
+const WHATSAPP_NUMBER = "905338695277";
 
-const texts = {
-  tr: {
-    heroTitle: "Ürün değil. Kontrollü bir atmosfer.",
-    heroSub: "VAERO, araç içindeki karmaşayı azaltır. Daha sade, daha kontrollü bir deneyim sunar.",
-    heroBtn: "Durumu öğren",
-    packageTitle: "Paketin içinde ne var?",
-    packageText: "VAERO cihaz ve başlangıç için özel seçilmiş 1 koku birlikte gelir. İlk kullanım için ayrıca parça aramana gerek kalmaz.",
-    stockTitle: "Stok yapısı",
-    stockText: "VAERO sürekli stok mantığıyla çalışmaz. Ürünler belirli aralıklarla sınırlı şekilde gelir. Bu yüzden sipariş öncesinde mevcut durum ve teslim süresi WhatsApp üzerinden netleşir.",
-    finalTitle: "Karar vermek zorunda değilsin.",
-    finalText: "Önce mevcut durumu öğren. Stok, fiyat ve teslim süresi netleşsin. Sonra istersen devam edersin.",
-    finalBtn: "Durumu öğren",
-    floatingBtn: "Durum sor"
-  },
+const translations = {
   en: {
-    heroTitle: "Not a product. A controlled atmosphere.",
-    heroSub: "VAERO reduces the noise inside your car. A cleaner, calmer and more controlled experience.",
-    heroBtn: "Check availability",
+    pageTitle: "VAERO | Experience Package",
+    systemName: "Experience Package",
+
+    heroLine1: "Not a product.",
+    heroLine2: "A controlled atmosphere.",
+    heroText: "VAERO reduces complexity inside your car and creates a cleaner, more controlled experience.",
+    heroButton: "Explore the details",
+
     packageTitle: "What’s inside the package?",
-    packageText: "VAERO comes with the device and 1 selected fragrance for the first experience. No extra parts are needed to begin.",
+    packageText: "VAERO comes with the device and one selected fragrance. No additional parts are needed to begin.",
+
+    chargingTitle: "Charging.",
+    chargingText: "Supports your phone while driving. The energy system works quietly in the background.",
+
+    diffusionTitle: "Diffusion.",
+    diffusionText: "It distributes the fragrance more evenly throughout the space.",
+
+    orderTitle: "Order.",
+    orderText: "Creates the feeling of one complete system without adding unnecessary clutter.",
+
+    whyTitle: "Why not separately?",
+    whyText: "You do not want unnecessary parts, cables or distractions inside your car. VAERO simplifies them into one point of use.",
+
     stockTitle: "Stock structure",
-    stockText: "VAERO does not operate with constant bulk stock. Products arrive in limited batches. Availability and delivery timing are confirmed through WhatsApp before ordering.",
-    finalTitle: "You don’t have to decide now.",
-    finalText: "First, check availability. Let the stock, price and delivery time become clear. Then continue only if it feels right.",
-    finalBtn: "Check availability",
-    floatingBtn: "Ask status"
+    stockText: "VAERO does not operate with permanent stock. Products arrive in limited batches. Availability and delivery time are confirmed through WhatsApp before ordering.",
+
+    finalTitle: "You do not have to decide now.",
+    finalText: "First, check the current availability, price and delivery time. Then continue when you are ready.",
+    finalButton: "Check availability",
+
+    deliveryArea: "Delivery across Cyprus.",
+    floatingButton: "Ask us",
+
+    whatsappMessage: "Hello, I would like to learn the current VAERO availability, price and delivery time."
   },
-  fa: {
-    heroTitle: "یک محصول نیست. یک فضای کنترل‌شده است.",
-    heroSub: "VAERO شلوغی داخل خودرو را کمتر می‌کند و تجربه‌ای ساده‌تر، آرام‌تر و کنترل‌شده‌تر می‌سازد.",
-    heroBtn: "مشاهده جزئیات",
-    packageTitle: "داخل بسته چیست؟",
-    packageText: "VAERO همراه با دستگاه و یک رایحه منتخب برای شروع تجربه ارائه می‌شود. برای شروع به قطعه اضافی نیاز نیست.",
-    stockTitle: "ساختار موجودی",
-    stockText: "VAERO با موجودی انبوه دائمی کار نمی‌کند. محصولات در سری‌های محدود عرضه می‌شوند. موجودی و زمان تحویل پیش از سفارش از طریق واتساپ مشخص می‌شود.",
-    finalTitle: "لازم نیست همین حالا تصمیم بگیرید.",
-    finalText: "ابتدا وضعیت موجودی، قیمت و زمان تحویل را بررسی کنید. سپس اگر مناسب بود ادامه دهید.",
-    finalBtn: "بررسی وضعیت",
-    floatingBtn: "پرسش وضعیت"
+
+  el: {
+    pageTitle: "VAERO | Πακέτο Εμπειρίας",
+    systemName: "Πακέτο Εμπειρίας",
+
+    heroLine1: "Δεν είναι απλώς ένα προϊόν.",
+    heroLine2: "Είναι μια ελεγχόμενη ατμόσφαιρα.",
+    heroText: "Το VAERO μειώνει την πολυπλοκότητα μέσα στο αυτοκίνητο και δημιουργεί μια πιο καθαρή και ελεγχόμενη εμπειρία.",
+    heroButton: "Δείτε τις λεπτομέρειες",
+
+    packageTitle: "Τι περιλαμβάνει το πακέτο;",
+    packageText: "Το VAERO περιλαμβάνει τη συσκευή και ένα επιλεγμένο άρωμα. Δεν χρειάζονται επιπλέον εξαρτήματα για να ξεκινήσετε.",
+
+    chargingTitle: "Φόρτιση.",
+    chargingText: "Υποστηρίζει το τηλέφωνό σας κατά την οδήγηση. Το σύστημα ενέργειας λειτουργεί διακριτικά στο παρασκήνιο.",
+
+    diffusionTitle: "Διάχυση.",
+    diffusionText: "Κατανέμει το άρωμα πιο ομοιόμορφα στον χώρο.",
+
+    orderTitle: "Τάξη.",
+    orderText: "Δημιουργεί την αίσθηση ενός ολοκληρωμένου συστήματος χωρίς περιττή ακαταστασία.",
+
+    whyTitle: "Γιατί όχι ξεχωριστά;",
+    whyText: "Δεν χρειάζεστε περιττά εξαρτήματα, καλώδια ή περισπασμούς μέσα στο αυτοκίνητο. Το VAERO τα απλοποιεί σε ένα σημείο χρήσης.",
+
+    stockTitle: "Δομή διαθεσιμότητας",
+    stockText: "Το VAERO δεν λειτουργεί με μόνιμο απόθεμα. Τα προϊόντα φτάνουν σε περιορισμένες παρτίδες. Η διαθεσιμότητα και ο χρόνος παράδοσης επιβεβαιώνονται μέσω WhatsApp πριν από την παραγγελία.",
+
+    finalTitle: "Δεν χρειάζεται να αποφασίσετε τώρα.",
+    finalText: "Ελέγξτε πρώτα τη διαθεσιμότητα, την τιμή και τον χρόνο παράδοσης. Στη συνέχεια συνεχίστε όταν είστε έτοιμοι.",
+    finalButton: "Έλεγχος διαθεσιμότητας",
+
+    deliveryArea: "Παράδοση σε όλη την Κύπρο.",
+    floatingButton: "Ρωτήστε μας",
+
+    whatsappMessage: "Γεια σας, θα ήθελα να μάθω τη διαθεσιμότητα, την τιμή και τον χρόνο παράδοσης του VAERO."
   },
+
+  tr: {
+    pageTitle: "VAERO | Deneyim Paketi",
+    systemName: "Deneyim Paketi",
+
+    heroLine1: "Ürün değil.",
+    heroLine2: "Kontrollü bir atmosfer.",
+    heroText: "VAERO, araç içindeki karmaşayı azaltır. Daha sade ve daha kontrollü bir deneyim sunar.",
+    heroButton: "Detayları gör",
+
+    packageTitle: "Paketin içinde ne var?",
+    packageText: "VAERO cihaz ve seçilmiş bir koku birlikte gelir. Başlangıç için ayrıca parça aramana gerek kalmaz.",
+
+    chargingTitle: "Şarj.",
+    chargingText: "Telefonunu sürüş sırasında destekler. Enerji tarafı arkada sessizce çalışır.",
+
+    diffusionTitle: "Yayılım.",
+    diffusionText: "Kokuyu ortama daha dengeli şekilde dağıtır.",
+
+    orderTitle: "Düzen.",
+    orderText: "Ekstra kalabalık yaratmadan araç içinde tek bir sistem hissi verir.",
+
+    whyTitle: "Neden ayrı ayrı değil?",
+    whyText: "Çünkü araç içinde fazla parça, fazla kablo ve dikkat dağıtıcı unsur istemezsin. VAERO bunları tek kullanım noktasında sadeleştirir.",
+
+    stockTitle: "Stok yapısı",
+    stockText: "VAERO sürekli stok mantığıyla çalışmaz. Ürünler belirli aralıklarla sınırlı şekilde gelir. Sipariş öncesinde mevcut durum ve teslim süresi WhatsApp üzerinden netleşir.",
+
+    finalTitle: "Karar vermek zorunda değilsin.",
+    finalText: "Önce mevcut durumu, fiyatı ve teslim süresini öğren. Ardından hazır olduğunda devam edersin.",
+    finalButton: "Durumu öğren",
+
+    deliveryArea: "Kıbrıs geneli teslimat.",
+    floatingButton: "Bilgi al",
+
+    whatsappMessage: "Merhaba, VAERO için mevcut stok, fiyat ve teslim süresini öğrenmek istiyorum."
+  },
+
   ru: {
-    heroTitle: "Не продукт. Контролируемая атмосфера.",
-    heroSub: "VAERO убирает лишний шум внутри автомобиля и создает более спокойный, чистый и контролируемый опыт.",
-    heroBtn: "Посмотреть детали",
+    pageTitle: "VAERO | Пакет впечатлений",
+    systemName: "Пакет впечатлений",
+
+    heroLine1: "Не просто продукт.",
+    heroLine2: "Контролируемая атмосфера.",
+    heroText: "VAERO уменьшает лишнюю сложность внутри автомобиля и создаёт более чистую и контролируемую атмосферу.",
+    heroButton: "Посмотреть детали",
+
     packageTitle: "Что входит в комплект?",
-    packageText: "VAERO поставляется с устройством и одним выбранным ароматом для первого опыта. Для начала не нужны дополнительные детали.",
+    packageText: "В комплект VAERO входят устройство и один выбранный аромат. Для начала дополнительные детали не требуются.",
+
+    chargingTitle: "Зарядка.",
+    chargingText: "Поддерживает заряд телефона во время поездки. Энергетическая система работает незаметно в фоновом режиме.",
+
+    diffusionTitle: "Распределение.",
+    diffusionText: "Равномернее распределяет аромат по салону.",
+
+    orderTitle: "Порядок.",
+    orderText: "Создаёт ощущение единой системы без лишнего беспорядка в автомобиле.",
+
+    whyTitle: "Почему не по отдельности?",
+    whyText: "В автомобиле не нужны лишние детали, кабели и отвлекающие элементы. VAERO объединяет их в одной точке использования.",
+
     stockTitle: "Структура наличия",
-    stockText: "VAERO не работает по принципу постоянного массового склада. Товары поступают ограниченными партиями. Наличие и сроки доставки уточняются через WhatsApp перед заказом.",
-    finalTitle: "Вам не нужно решать сразу.",
-    finalText: "Сначала уточните наличие, цену и срок доставки. Затем продолжайте, если это вам подходит.",
-    finalBtn: "Уточнить наличие",
-    floatingBtn: "Спросить статус"
+    stockText: "VAERO не работает с постоянным массовым запасом. Продукция поступает ограниченными партиями. Наличие и сроки доставки подтверждаются через WhatsApp перед заказом.",
+
+    finalTitle: "Вам не нужно решать прямо сейчас.",
+    finalText: "Сначала уточните наличие, цену и срок доставки. Затем продолжайте, когда будете готовы.",
+    finalButton: "Уточнить наличие",
+
+    deliveryArea: "Доставка по всему Кипру.",
+    floatingButton: "Узнать больше",
+
+    whatsappMessage: "Здравствуйте, я хотел бы узнать текущую доступность, цену и срок доставки VAERO."
   }
 };
 
-const t = texts[lang] || texts.en;
+const supportedLanguages = ["en", "el", "tr", "ru"];
+let currentLanguage = "en";
 
-if(lang === "fa"){
-  document.body.dir = "rtl";
+function detectLanguage(){
+  const savedLanguage = localStorage.getItem("vaero_language");
+
+  if(savedLanguage && supportedLanguages.includes(savedLanguage)){
+    return savedLanguage;
+  }
+
+  const browserLanguages = navigator.languages || [navigator.language];
+
+  for(const browserLanguage of browserLanguages){
+    const shortCode = browserLanguage.toLowerCase().split("-")[0];
+
+    if(supportedLanguages.includes(shortCode)){
+      return shortCode;
+    }
+  }
+
+  return "en";
 }
-const WHATSAPP_NUMBER = "905338695277";
 
-function trackEvent(eventName, meta = {}) {
+function applyLanguage(language){
+  const selectedLanguage = supportedLanguages.includes(language)
+    ? language
+    : "en";
+
+  const translation = translations[selectedLanguage];
+
+  currentLanguage = selectedLanguage;
+
+  document.documentElement.lang = selectedLanguage;
+  document.documentElement.dir = "ltr";
+  document.title = translation.pageTitle;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+
+    if(translation[key]){
+      element.textContent = translation[key];
+    }
+  });
+}
+
+function trackEvent(eventName, meta = {}){
   fetch("https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1/events", {
     method: "POST",
     headers: {
@@ -757,25 +901,45 @@ function trackEvent(eventName, meta = {}) {
       event_name: eventName,
       page: "sales",
       meta: {
-  ...meta,
-  device: window.innerWidth <= 767 ? "mobile" : window.innerWidth <= 1024 ? "tablet" : "desktop",
-  width: window.innerWidth
-}
+        ...meta,
+        language: currentLanguage,
+        device:
+          window.innerWidth <= 767
+            ? "mobile"
+            : window.innerWidth <= 1024
+              ? "tablet"
+              : "desktop",
+        width: window.innerWidth
+      }
     }),
     keepalive: true
-  }).catch(()=>{});
+  }).catch(() => {});
 }
 
-function openWhatsApp(source="unknown"){
-  trackEvent("whatsapp_click",{source:source,page:"sales"});
-  const msg=encodeURIComponent("Merhaba, VAERO için mevcut stok, fiyat ve teslim süresini öğrenmek istiyorum.");
-  window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+msg;
+function openWhatsApp(source = "unknown"){
+  const translation = translations[currentLanguage] || translations.en;
+  const message = encodeURIComponent(translation.whatsappMessage);
+
+  trackEvent("whatsapp_click", {
+    source: source,
+    page: "sales"
+  });
+
+  window.location.href =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    message;
 }
 
-trackEvent("page_view",{page:"sales"});
+applyLanguage(detectLanguage());
 
-window.addEventListener("scroll", function() {
+trackEvent("page_view", {
+  page: "sales",
+  language: currentLanguage
+});
 
+window.addEventListener("scroll", function(){
   const scroll = window.scrollY;
   const height = document.body.scrollHeight - window.innerHeight;
   const ratio = height > 0 ? scroll / height : 0;
@@ -784,34 +948,30 @@ window.addEventListener("scroll", function() {
   const whisper = document.getElementById("waWhisper");
   const whySection = document.querySelector(".white");
 
-  if (!wa) return;
+  if(!wa) return;
 
-  if (ratio > 0.85) {
+  if(ratio > 0.85){
     wa.style.opacity = "0";
     wa.style.pointerEvents = "none";
-    if (whisper) whisper.classList.remove("show");
-  } else {
+
+    if(whisper){
+      whisper.classList.remove("show");
+    }
+  }else{
     wa.style.opacity = "1";
     wa.style.pointerEvents = "auto";
   }
 
-  if (whisper && whySection && ratio <= 0.85) {
+  if(whisper && whySection && ratio <= 0.85){
     const rect = whySection.getBoundingClientRect();
 
     const inZone =
       rect.top < window.innerHeight * 0.78 &&
       rect.bottom > window.innerHeight * 0.22;
 
-    if (inZone) {
-      whisper.classList.add("show");
-    } else {
-      whisper.classList.remove("show");
-    }
+    whisper.classList.toggle("show", inZone);
   }
-
 });
-
-document.querySelector(".hero h1").innerText = t.heroTitle;
 </script>
 
 </body>
