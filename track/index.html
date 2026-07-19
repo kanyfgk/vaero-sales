@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VAERO | Gönderi Takip</title>
+<title>VAERO | Shipment Tracking</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -152,19 +152,30 @@ button:disabled{
 <div class="wrap">
   <div class="logo">VAERO</div>
 
-  <h1>Track your atmosphere.</h1>
+  <h1 data-i18n="title">Track your atmosphere.</h1>
 
-  <p>
-    Follow your VAERO delivery in a simple and clear way.
-  </p>
+<p data-i18n="subtitle">
+  Follow your VAERO delivery in a simple and clear way.
+</p>
 
   <div class="track-box">
-    <label for="trackingCode">Takip numarası</label>
-    <input id="trackingCode" type="text" placeholder="Takip numarası girin">
+    <label for="trackingCode" data-i18n="trackingLabel">
+  Tracking number
+</label>
 
-    <label for="carrierSelect">Kargo şirketi</label>
+<input
+  id="trackingCode"
+  type="text"
+  placeholder="Enter your tracking number"
+  data-i18n-placeholder="trackingPlaceholder"
+  autocomplete="off"
+>
+
+    <label for="carrierSelect" data-i18n="carrierLabel">
+  Carrier
+</label>
     <select id="carrierSelect">
-      <option value="">Seçiniz</option>
+      <option value="" data-i18n="carrierPlaceholder">Select a carrier</option>
       <option value="boxnow">BOX NOW</option>
       <option value="dhl">DHL</option>
       <option value="fedex">FedEx</option>
@@ -180,74 +191,122 @@ button:disabled{
       <option value="postnl">PostNL</option>
       <option value="royal-mail">Royal Mail</option>
       <option value="ptt">PTT Kargo</option>
-      <option value="other">Diğer</option>
+      <option value="other" data-i18n="otherCarrier">Other</option>
     </select>
 
-    <button id="trackBtn" type="button">Track</button>
+    <button id="trackBtn" type="button" data-i18n="trackButton">
+  Track shipment
+</button>
 
-    <div id="errorMsg" class="error">
-      Lütfen takip numarası girin ve kargo şirketi seçin.
-    </div>
+    <div id="errorMsg" class="error" data-i18n="errorMessage">
+  Enter a tracking number and select a carrier.
+</div>
   </div>
 
-  <div class="note">
-    Every VAERO shipment is prepared with care.<br>
-    Tracking updates may take time depending on the carrier.
-  </div>
+  <div class="note" data-i18n="note">
+  Every VAERO shipment is prepared with care. Tracking updates may take time depending on the carrier.
+</div>
 </div>
 
 <div id="overlay" class="overlay">
   <div class="spinner"></div>
-  <div>Gönderi bilgisine yönlendiriliyorsunuz...</div>
+  <div data-i18n="redirecting">
+  Redirecting to shipment information...
+</div>
 </div>
 
 <script>
-  window.onload = () => {
-  document.getElementById("trackingCode").focus();
-};
-  const lang = navigator.language.slice(0,2);
-
-const texts = {
-  tr: {
-    title: "Atmosferini takip et.",
-    subtitle: "VAERO gönderini sade ve net bir şekilde takip et.",
-    code: "Takip numarası",
-    carrier: "Kargo şirketi",
-    button: "Takip Et",
-    note: "Her VAERO gönderisi özenle hazırlanır. Takip güncellemeleri kargo şirketine göre zaman alabilir."
-  },
-  en: {
-    title: "Track your atmosphere.",
-    subtitle: "Follow your VAERO delivery in a simple and clear way.",
-    code: "Tracking number",
-    carrier: "Carrier",
-    button: "Track",
-    note: "Every VAERO shipment is prepared with care. Tracking updates may take time depending on the carrier."
-  },
-  fa: {
-  title: "جریان خود را دنبال کنید.",
-  subtitle: "وضعیت ارسال VAERO را به‌صورت ساده و شفاف مشاهده کنید.",
-  code: "کد رهگیری",
-  carrier: "شرکت حمل‌ونقل",
-  button: "رهگیری",
-  note: "هر ارسال VAERO با دقت و توجه آماده می‌شود. به‌روزرسانی‌ها ممکن است بسته به شرکت حمل‌ونقل زمان ببرد."
-},
-ru: {
-  title: "Контроль в пути.",
-  subtitle: "Следите за доставкой VAERO спокойно и без лишнего шума.",
-  code: "Номер отслеживания",
-  carrier: "Служба доставки",
-  button: "Отследить",
-  note: "Каждая отправка VAERO подготавливается с вниманием. Обновления могут занимать время в зависимости от службы доставки."
-}
-};
-
-const t = texts[lang] || texts.en;
-  if(lang === "fa"){
-  document.body.dir = "rtl";
-}
 const SUPABASE_URL = "https://wpfiszzxlwkmaqcqmywa.supabase.co/rest/v1";
 const SUPABASE_KEY = "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN";
+
+const translations = {
+  en: {
+    pageTitle: "VAERO | Shipment Tracking",
+    title: "Track your atmosphere.",
+    subtitle: "Follow your VAERO delivery in a simple and clear way.",
+
+    trackingLabel: "Tracking number",
+    trackingPlaceholder: "Enter your tracking number",
+
+    carrierLabel: "Carrier",
+    carrierPlaceholder: "Select a carrier",
+    otherCarrier: "Other",
+
+    trackButton: "Track shipment",
+
+    errorMessage: "Enter a tracking number and select a carrier.",
+
+    note: "Every VAERO shipment is prepared with care. Tracking updates may take time depending on the carrier.",
+
+    redirecting: "Redirecting to shipment information..."
+  },
+
+  el: {
+    pageTitle: "VAERO | Παρακολούθηση Αποστολής",
+    title: "Παρακολουθήστε την ατμόσφαιρά σας.",
+    subtitle: "Παρακολουθήστε την παράδοση του VAERO με απλό και ξεκάθαρο τρόπο.",
+
+    trackingLabel: "Αριθμός παρακολούθησης",
+    trackingPlaceholder: "Εισαγάγετε τον αριθμό παρακολούθησης",
+
+    carrierLabel: "Εταιρεία μεταφοράς",
+    carrierPlaceholder: "Επιλέξτε εταιρεία μεταφοράς",
+    otherCarrier: "Άλλη",
+
+    trackButton: "Παρακολούθηση αποστολής",
+
+    errorMessage: "Εισαγάγετε έναν αριθμό παρακολούθησης και επιλέξτε εταιρεία μεταφοράς.",
+
+    note: "Κάθε αποστολή VAERO προετοιμάζεται με προσοχή. Οι ενημερώσεις ενδέχεται να χρειαστούν χρόνο, ανάλογα με την εταιρεία μεταφοράς.",
+
+    redirecting: "Μεταφέρεστε στις πληροφορίες αποστολής..."
+  },
+
+  tr: {
+    pageTitle: "VAERO | Gönderi Takip",
+    title: "Atmosferini takip et.",
+    subtitle: "VAERO gönderini sade ve net bir şekilde takip et.",
+
+    trackingLabel: "Takip numarası",
+    trackingPlaceholder: "Takip numaranızı girin",
+
+    carrierLabel: "Kargo şirketi",
+    carrierPlaceholder: "Kargo şirketi seçin",
+    otherCarrier: "Diğer",
+
+    trackButton: "Gönderiyi takip et",
+
+    errorMessage: "Takip numarası girin ve kargo şirketi seçin.",
+
+    note: "Her VAERO gönderisi özenle hazırlanır. Takip güncellemeleri kargo şirketine göre zaman alabilir.",
+
+    redirecting: "Gönderi bilgisine yönlendiriliyorsunuz..."
+  },
+
+  ru: {
+    pageTitle: "VAERO | Отслеживание Отправления",
+    title: "Отслеживайте свою атмосферу.",
+    subtitle: "Следите за доставкой VAERO просто и понятно.",
+
+    trackingLabel: "Номер отслеживания",
+    trackingPlaceholder: "Введите номер отслеживания",
+
+    carrierLabel: "Служба доставки",
+    carrierPlaceholder: "Выберите службу доставки",
+    otherCarrier: "Другая",
+
+    trackButton: "Отследить отправление",
+
+    errorMessage: "Введите номер отслеживания и выберите службу доставки.",
+
+    note: "Каждая отправка VAERO подготавливается с особым вниманием. Обновления могут появляться с задержкой в зависимости от службы доставки.",
+
+    redirecting: "Переход к информации об отправлении..."
+  }
+};
+
+const supportedLanguages = ["en", "el", "tr", "ru"];
+let currentLanguage = "en";
 
 const trackingInput = document.getElementById("trackingCode");
 const carrierSelect = document.getElementById("carrierSelect");
@@ -255,7 +314,57 @@ const trackBtn = document.getElementById("trackBtn");
 const errorMsg = document.getElementById("errorMsg");
 const overlay = document.getElementById("overlay");
 
-function sendEvent(eventName, meta = {}) {
+function detectLanguage(){
+  const savedLanguage = localStorage.getItem("vaero_language");
+
+  if(savedLanguage && supportedLanguages.includes(savedLanguage)){
+    return savedLanguage;
+  }
+
+  const browserLanguages = navigator.languages || [navigator.language];
+
+  for(const browserLanguage of browserLanguages){
+    const shortCode = browserLanguage.toLowerCase().split("-")[0];
+
+    if(supportedLanguages.includes(shortCode)){
+      return shortCode;
+    }
+  }
+
+  return "en";
+}
+
+function applyLanguage(language){
+  const selectedLanguage = supportedLanguages.includes(language)
+    ? language
+    : "en";
+
+  const translation = translations[selectedLanguage];
+
+  currentLanguage = selectedLanguage;
+
+  document.documentElement.lang = selectedLanguage;
+  document.documentElement.dir = "ltr";
+  document.title = translation.pageTitle;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
+
+    if(translation[key]){
+      element.textContent = translation[key];
+    }
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
+    const key = element.dataset.i18nPlaceholder;
+
+    if(translation[key]){
+      element.placeholder = translation[key];
+    }
+  });
+}
+
+function sendEvent(eventName, meta = {}){
   fetch(SUPABASE_URL + "/events", {
     method: "POST",
     headers: {
@@ -266,28 +375,64 @@ function sendEvent(eventName, meta = {}) {
     body: JSON.stringify({
       event_name: eventName,
       page: window.location.pathname,
-      meta: meta
+      meta: {
+        ...meta,
+        language: currentLanguage,
+        device:
+          window.innerWidth <= 767
+            ? "mobile"
+            : window.innerWidth <= 1024
+              ? "tablet"
+              : "desktop",
+        width: window.innerWidth
+      }
     }),
     keepalive: true
   }).catch(function(){});
 }
 
-function buildTrackingUrl(carrier, code) {
-  const n = encodeURIComponent(code);
+function buildTrackingUrl(carrier, code){
+  const trackingNumber = encodeURIComponent(code);
 
-  if (carrier === "dhl") return "https://www.dhl.com/tr-en/home/tracking/tracking-express.html?submit=1&tracking-id=" + n;
-  if (carrier === "fedex") return "https://www.fedex.com/fedextrack/?trknbr=" + n;
-  if (carrier === "ups") return "https://www.ups.com/track?tracknum=" + n;
-  if (carrier === "aramex") return "https://www.aramex.com/track/results?ShipmentNumber=" + n;
+  if(carrier === "boxnow"){
+    return "https://boxnow.cy/track?code=" + trackingNumber;
+  }
 
-  return "https://t.17track.net/en#nums=" + n;
+  if(carrier === "dhl"){
+    return "https://www.dhl.com/global-en/home/tracking.html?tracking-id=" + trackingNumber;
+  }
+
+  if(carrier === "fedex"){
+    return "https://www.fedex.com/fedextrack/?trknbr=" + trackingNumber;
+  }
+
+  if(carrier === "ups"){
+    return "https://www.ups.com/track?tracknum=" + trackingNumber;
+  }
+
+  if(carrier === "aramex"){
+    return "https://www.aramex.com/track/results?ShipmentNumber=" + trackingNumber;
+  }
+
+  return "https://t.17track.net/en#nums=" + trackingNumber;
 }
 
-function goToTracking() {
+function checkForm(){
   const code = trackingInput.value.trim();
   const carrier = carrierSelect.value;
 
-  if (!code || !carrier) {
+  trackBtn.disabled = !(code && carrier);
+
+  if(code && carrier){
+    errorMsg.style.display = "none";
+  }
+}
+
+function goToTracking(){
+  const code = trackingInput.value.trim();
+  const carrier = carrierSelect.value;
+
+  if(!code || !carrier){
     errorMsg.style.display = "block";
     return;
   }
@@ -307,9 +452,11 @@ function goToTracking() {
   }, 600);
 }
 
-sendEvent("page_view", {
-  referrer: document.referrer,
-  device: navigator.userAgent
+applyLanguage(detectLanguage());
+checkForm();
+
+window.addEventListener("load", function(){
+  trackingInput.focus();
 });
 
 let inputStarted = false;
@@ -319,13 +466,17 @@ trackingInput.addEventListener("focus", function(){
 });
 
 trackingInput.addEventListener("input", function(){
-  if (!inputStarted) {
+  checkForm();
+
+  if(!inputStarted && trackingInput.value.trim()){
     sendEvent("input_started");
     inputStarted = true;
   }
 });
 
 carrierSelect.addEventListener("change", function(){
+  checkForm();
+
   sendEvent("carrier_selected", {
     carrier: carrierSelect.value
   });
@@ -333,55 +484,19 @@ carrierSelect.addEventListener("change", function(){
 
 trackBtn.addEventListener("click", goToTracking);
 
-trackingInput.addEventListener("keydown", function(e){
-  if (e.key === "Enter") goToTracking();
+trackingInput.addEventListener("keydown", function(event){
+  if(event.key === "Enter"){
+    goToTracking();
+  }
+});
+
+sendEvent("page_view", {
+  referrer: document.referrer
 });
 
 setTimeout(function(){
   sendEvent("time_30s");
 }, 30000);
-  setTimeout(() => {
-
-  // Tüm h1'leri bul ve değiştir
-  document.querySelectorAll("h1").forEach(el => {
-    el.innerText = t.title;
-  });
-
-  // Tüm p'leri bul ve ilkini değiştir
-  const p = document.querySelector("p");
-  if (p) p.innerText = t.subtitle;
-
-  // label'ları değiştir
-  const labels = document.querySelectorAll("label");
-  if (labels[0]) labels[0].innerText = t.code;
-  if (labels[1]) labels[1].innerText = t.carrier;
-
-  // buton
-  const btn = document.getElementById("trackBtn");
-if (btn) btn.innerText = t.button;
-
-  // alt yazı
-  const note = document.querySelector(".note");
-  if (note) note.innerText = t.note;
-
-}, 100);
-  document.getElementById("trackBtn").onclick = function(){
-  goToTracking();
-};
-  function checkForm(){
-  const code = trackingInput.value.trim();
-  const carrier = carrierSelect.value;
-
-  trackBtn.disabled = !(code && carrier);
-}
-
-trackingInput.addEventListener("input", checkForm);
-carrierSelect.addEventListener("change", checkForm);
-
-checkForm();
-window.onload = function(){
-  document.getElementById("trackingCode").focus();
-};
 </script>
 
 </body>
